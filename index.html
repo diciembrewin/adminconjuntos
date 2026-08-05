@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminCasa · Guía de Mantenimiento del Hogar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15); }
+        .modal { animation: fadeSlide 0.2s ease-out; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: scale(0.96) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #7c3aed;
+            margin-top: 6px;
+            border-radius: 4px;
+        }
+        .nav-link { transition: all 0.15s; }
+        .nav-link:hover { color: #7c3aed; }
+        .cookie-banner {
+            background: rgba(15,23,42,0.7);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- COOKIE BANNER (Centrado) -->
+<div id="cookieBanner" class="fixed inset-0 flex items-center justify-center z-[999] cookie-banner px-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-7 text-center">
+        <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto flex items-center justify-center mb-4">
+            <i class="fas fa-cookie-bite text-purple-600 text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800">Aviso de Cookies</h3>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">Usamos cookies para mejorar tu experiencia. Al aceptar, confirmas que estás de acuerdo.</p>
+        <div class="mt-6 flex flex-col gap-3">
+            <button onclick="acceptCookies()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-2xl transition">Aceptar</button>
+            <button onclick="acceptCookies()" class="w-full border border-purple-200 hover:bg-purple-50 text-slate-700 font-medium py-3 rounded-2xl transition">Rechazar</button>
+        </div>
+        <p class="text-[10px] text-slate-400 mt-5">Al continuar aceptas nuestra política de privacidad.</p>
+    </div>
+</div>
+
+<!-- CONTENIDO PRINCIPAL (oculto hasta aceptar cookies) -->
+<div id="mainContent" style="display:none;">
+
+<!-- NAVBAR -->
+<nav class="bg-white border-b border-purple-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 flex justify-between items-center h-20">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            <div class="w-10 h-10 bg-purple-600 rounded-2xl flex items-center justify-center shadow-md">
+                <i class="fas fa-home text-white text-2xl"></i>
+            </div>
+            <span class="text-2xl font-bold tracking-tight">Admin<span class="text-purple-600">Casa</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+            <a href="#quienes" class="nav-link">Quiénes somos</a>
+            <a href="#gratis" class="nav-link">¿Por qué gratis?</a>
+            <a href="#guias" class="nav-link">Guías</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+        <button id="menuBtn" class="md:hidden text-2xl text-slate-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-purple-100 px-5 py-4 flex flex-col gap-2 text-sm font-medium text-slate-600">
+        <a href="#quienes" class="py-2 hover:text-purple-600" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Quiénes somos</a>
+        <a href="#gratis" class="py-2 hover:text-purple-600" onclick="document.getElementById('mobileMenu').classList.add('hidden')">¿Por qué gratis?</a>
+        <a href="#guias" class="py-2 hover:text-purple-600" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Guías</a>
+        <a href="#contacto" class="py-2 hover:text-purple-600" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Contacto</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="bg-gradient-to-br from-purple-800 to-purple-700 text-white py-20 px-5">
+    <div class="max-w-4xl mx-auto">
+        <span class="inline-block bg-white/10 backdrop-blur-sm text-yellow-200 text-xs font-semibold px-4 py-1.5 rounded-full mb-4 border border-white/20">PROYECTO EDUCATIVO · SIN LUCRO</span>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight">Cuida tu casa.<br><span class="text-yellow-300">Protege tu patrimonio.</span></h1>
+        <p class="text-purple-100 text-xl mt-4 max-w-lg">Guía práctica y gratuita para el mantenimiento, limpieza, remodelación y cuidado integral de tu hogar.</p>
+        <div class="flex flex-wrap gap-4 mt-8">
+            <a href="#guias" class="bg-white text-purple-800 hover:bg-purple-50 font-semibold px-7 py-3.5 rounded-2xl shadow-lg transition inline-flex items-center gap-2">Explorar guías <i class="fas fa-arrow-right"></i></a>
+            <a href="#quienes" class="border border-white/30 hover:bg-white/10 px-7 py-3.5 rounded-2xl transition">Conocer más</a>
+        </div>
+    </div>
+</header>
+
+<!-- DISCLAIMER -->
+<div class="max-w-5xl mx-auto px-5 -mt-6 relative z-10">
+    <div class="bg-amber-50 border-l-4 border-amber-500 rounded-2xl p-6 shadow-sm">
+        <div class="flex gap-4 items-start">
+            <i class="fas fa-exclamation-triangle text-amber-500 text-2xl"></i>
+            <div>
+                <h4 class="font-bold text-amber-800">Aviso importante — Solo educativo e informativo</h4>
+                <p class="text-amber-700 text-sm leading-relaxed">Esta página es 100% educativa. No cobro por servicios, no vendo productos ni genero leads comerciales. Toda la información es de carácter general y no sustituye el consejo de profesionales calificados. Proyecto personal de Roger Enrique Mendez Rodriguez · Medellín, Colombia.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- QUIÉNES SOMOS -->
+<section id="quienes" class="max-w-6xl mx-auto px-5 py-16">
+    <div class="grid md:grid-cols-5 gap-10 items-center">
+        <div class="md:col-span-2">
+            <span class="text-purple-600 text-xs font-semibold tracking-widest bg-purple-100 px-3 py-1 rounded-full">CONÓCEME</span>
+            <h2 class="text-4xl font-bold text-slate-800 mt-3 section-title">Quiénes somos</h2>
+            <p class="text-slate-600 text-lg mt-4">Hola, soy <strong>Roger Enrique Mendez Rodriguez</strong>, C.C. 1.045.732.890. Resido en Medellín, Colombia.</p>
+        </div>
+        <div class="md:col-span-3 bg-white rounded-3xl p-8 shadow-md border border-purple-100 flex flex-col md:flex-row gap-6 items-start">
+            <img src="https://picsum.photos/seed/roger/120/120" alt="Roger" class="w-28 h-28 rounded-2xl object-cover border-4 border-purple-100">
+            <div>
+                <p class="text-slate-600 text-sm leading-relaxed">Creé AdminCasa al observar cómo la falta de información práctica genera gastos innecesarios en los hogares colombianos: goteras que empeoran, remodelaciones mal planificadas y ausencia de mantenimiento preventivo.</p>
+                <div class="mt-3 flex items-center gap-2 text-purple-600 text-sm"><i class="fas fa-map-pin"></i> Medellín, Antioquia · Colombia</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POR QUÉ GRATIS -->
+<section id="gratis" class="bg-white border-y border-purple-100 py-16 px-5">
+    <div class="max-w-6xl mx-auto text-center">
+        <span class="text-purple-600 text-xs font-semibold tracking-widest bg-purple-100 px-3 py-1 rounded-full">MI COMPROMISO</span>
+        <h2 class="text-4xl font-bold text-slate-800 mt-3 section-title mx-auto">¿Por qué lo hago gratis?</h2>
+        <p class="text-slate-600 text-lg mt-4 max-w-xl mx-auto">Porque la información sobre el cuidado del hogar debe estar al alcance de todos.</p>
+        <div class="grid md:grid-cols-3 gap-6 mt-10 text-left">
+            <div class="bg-purple-50/70 p-7 rounded-3xl border border-purple-100">
+                <div class="w-12 h-12 bg-purple-200 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-heart text-purple-600 text-2xl"></i></div>
+                <h3 class="font-bold text-xl">Amor por la comunidad</h3>
+                <p class="text-slate-600 text-sm mt-2">Vivo en Medellín y quiero que los propietarios e inquilinos tengan herramientas útiles para cuidar su vivienda.</p>
+            </div>
+            <div class="bg-purple-50/70 p-7 rounded-3xl border border-purple-100">
+                <div class="w-12 h-12 bg-purple-200 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-hand-holding-heart text-purple-600 text-2xl"></i></div>
+                <h3 class="font-bold text-xl">Sin interés comercial</h3>
+                <p class="text-slate-600 text-sm mt-2">No ofrezco servicios, no cobro consultas, no tengo afiliados ni recibo comisiones. Proyecto personal sin ánimo de lucro.</p>
+            </div>
+            <div class="bg-purple-50/70 p-7 rounded-3xl border border-purple-100">
+                <div class="w-12 h-12 bg-purple-200 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-seedling text-purple-600 text-2xl"></i></div>
+                <h3 class="font-bold text-xl">Prevenir es ahorrar</h3>
+                <p class="text-slate-600 text-sm mt-2">Muchos gastos se evitan con información clara. Compartir este conocimiento es mi manera de aportar a la comunidad.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GUÍAS -->
+<section id="guias" class="max-w-6xl mx-auto px-5 py-16">
+    <div class="text-center mb-12">
+        <span class="text-purple-600 text-xs font-semibold tracking-widest bg-purple-100 px-3 py-1 rounded-full">CONOCIMIENTO PRÁCTICO</span>
+        <h2 class="text-4xl font-bold text-slate-800 mt-3 section-title mx-auto">Guías prácticas para tu hogar</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div onclick="openModal(0)" class="bg-white p-6 rounded-3xl border border-purple-200 shadow-sm hover:shadow-xl transition card-hover cursor-pointer">
+            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-tools text-purple-700 text-3xl"></i></div>
+            <h3 class="font-bold text-xl">Mantenimiento Preventivo</h3>
+            <p class="text-slate-500 text-sm mt-2">Inspecciones regulares para evitar problemas mayores.</p>
+            <span class="inline-block mt-4 text-purple-600 font-semibold text-sm">Ver guía <i class="fas fa-arrow-right ml-1"></i></span>
+        </div>
+        <!-- Card 2 -->
+        <div onclick="openModal(1)" class="bg-white p-6 rounded-3xl border border-purple-200 shadow-sm hover:shadow-xl transition card-hover cursor-pointer">
+            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-broom text-purple-700 text-3xl"></i></div>
+            <h3 class="font-bold text-xl">Limpieza y Organización</h3>
+            <p class="text-slate-500 text-sm mt-2">Rutinas eficientes y productos ecológicos.</p>
+            <span class="inline-block mt-4 text-purple-600 font-semibold text-sm">Ver guía <i class="fas fa-arrow-right ml-1"></i></span>
+        </div>
+        <!-- Card 3 -->
+        <div onclick="openModal(2)" class="bg-white p-6 rounded-3xl border border-purple-200 shadow-sm hover:shadow-xl transition card-hover cursor-pointer">
+            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-paint-roller text-purple-700 text-3xl"></i></div>
+            <h3 class="font-bold text-xl">Remodelación Inteligente</h3>
+            <p class="text-slate-500 text-sm mt-2">Planifica mejoras y cumple la normativa colombiana.</p>
+            <span class="inline-block mt-4 text-purple-600 font-semibold text-sm">Ver guía <i class="fas fa-arrow-right ml-1"></i></span>
+        </div>
+        <!-- Card 4 -->
+        <div onclick="openModal(3)" class="bg-white p-6 rounded-3xl border border-purple-200 shadow-sm hover:shadow-xl transition card-hover cursor-pointer">
+            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-file-invoice-dollar text-purple-700 text-3xl"></i></div>
+            <h3 class="font-bold text-xl">Impuestos Prediales</h3>
+            <p class="text-slate-500 text-sm mt-2">Todo sobre el predial en Colombia.</p>
+            <span class="inline-block mt-4 text-purple-600 font-semibold text-sm">Ver guía <i class="fas fa-arrow-right ml-1"></i></span>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="bg-white border-t border-purple-100 py-16 px-5">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+        <div>
+            <span class="text-purple-600 text-xs font-semibold tracking-widest bg-purple-100 px-3 py-1 rounded-full">HABLEMOS</span>
+            <h2 class="text-4xl font-bold text-slate-800 mt-3 section-title">Contacto</h2>
+            <div class="space-y-4 mt-6 text-slate-600">
+                <div><i class="fas fa-user text-purple-600 w-6"></i> Roger Enrique Mendez Rodriguez · C.C. 1.045.732.890</div>
+                <div><i class="fas fa-envelope text-purple-600 w-6"></i> <a href="mailto:em1885576@gmail.com" class="text-purple-600 hover:underline">em1885576@gmail.com</a></div>
+                <div><i class="fas fa-map-marker-alt text-purple-600 w-6"></i> Cl. 6 #28-23, Medellín, Antioquia</div>
+            </div>
+            <div class="mt-6 bg-purple-50 p-5 rounded-2xl border border-purple-200 text-sm text-purple-800">
+                <strong>¿Preguntas?</strong> Escríbeme por correo. Respondo consultas educativas sin costo.
+            </div>
+        </div>
+        <div class="bg-purple-50 p-8 rounded-3xl border border-purple-200">
+            <h3 class="font-bold text-2xl">Envíame tu consulta</h3>
+            <form id="contactForm" onsubmit="handleSubmit(event)" class="mt-4 space-y-4">
+                <input type="text" placeholder="Nombre" required class="w-full px-5 py-3 bg-white border border-purple-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
+                <input type="email" placeholder="Correo electrónico" required class="w-full px-5 py-3 bg-white border border-purple-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
+                <select required class="w-full px-5 py-3 bg-white border border-purple-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
+                    <option value="">Asunto</option>
+                    <option>Mantenimiento</option>
+                    <option>Limpieza</option>
+                    <option>Remodelación</option>
+                    <option>Impuestos</option>
+                </select>
+                <textarea rows="4" placeholder="Mensaje" required class="w-full px-5 py-3 bg-white border border-purple-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 resize-none"></textarea>
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3.5 rounded-2xl transition flex items-center justify-center gap-2">Enviar consulta <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <p class="text-[10px] text-slate-400 text-center mt-4">No compartimos tus datos. Ley 1581 de 2012.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-purple-900 text-purple-200 py-12 px-5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8 text-sm">
+        <div>
+            <div class="flex items-center gap-2"><i class="fas fa-home text-white text-xl"></i><span class="text-white font-bold text-xl">AdminCasa</span></div>
+            <p class="max-w-xs mt-2">Proyecto educativo personal de Roger Enrique Mendez Rodriguez. 100% gratuito · Medellín, Colombia.</p>
+        </div>
+        <div class="flex flex-wrap gap-8">
+            <div><h5 class="text-white font-semibold">Enlaces</h5><a href="#quienes" class="block hover:text-white mt-1">Quiénes somos</a><a href="#guias" class="block hover:text-white">Guías</a></div>
+            <div><h5 class="text-white font-semibold">Legal</h5><button onclick="openLegal('politicas')" class="block hover:text-white mt-1">Privacidad</button><button onclick="openLegal('terminos')" class="block hover:text-white">Términos</button></div>
+            <div><h5 class="text-white font-semibold">Contacto</h5><a href="mailto:em1885576@gmail.com" class="block hover:text-white">em1885576@gmail.com</a></div>
+        </div>
+    </div>
+    <div class="max-w-6xl mx-auto border-t border-purple-800 mt-8 pt-6 text-xs flex flex-col md:flex-row justify-between text-purple-300">
+        <span>© 2026 Roger Enrique Mendez Rodriguez — Todos los derechos reservados.</span>
+        <span>Actualizado: 14 de julio de 2026 · 100% educativo</span>
+    </div>
+</footer>
+
+</div> <!-- Fin mainContent -->
+
+<!-- MODAL GUÍAS -->
+<div id="topicModal" class="fixed inset-0 z-[60] flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm hidden" onclick="if(event.target===this) closeModal()">
+    <div class="bg-white max-w-2xl w-full rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden flex flex-col modal">
+        <div class="px-6 py-5 border-b flex justify-between items-center bg-purple-50">
+            <div class="flex items-center gap-3"><div id="modalIcon" class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center"></div><h3 id="modalTitle" class="font-bold text-2xl"></h3></div>
+            <button onclick="closeModal()" class="text-3xl text-slate-400 hover:text-slate-600">×</button>
+        </div>
+        <div id="modalBody" class="p-6 overflow-y-auto text-sm text-slate-600 leading-relaxed space-y-4 flex-1"></div>
+        <div class="px-6 py-4 bg-purple-50 border-t text-right"><button onclick="closeModal()" class="px-6 py-2 bg-purple-600 text-white rounded-2xl text-sm font-semibold hover:bg-purple-700">Cerrar</button></div>
+    </div>
+</div>
+
+<!-- MODAL LEGAL -->
+<div id="legalModal" class="fixed inset-0 z-[70] flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm hidden" onclick="if(event.target===this) closeLegal()">
+    <div class="bg-white max-w-2xl w-full rounded-3xl shadow-2xl max-h-[90vh] overflow-hidden flex flex-col modal">
+        <div class="px-6 py-5 border-b flex justify-between items-center bg-purple-50"><h3 id="legalTitle" class="font-bold text-2xl"></h3><button onclick="closeLegal()" class="text-3xl text-slate-400 hover:text-slate-600">×</button></div>
+        <div id="legalBody" class="p-6 overflow-y-auto text-sm text-slate-600 leading-relaxed space-y-4 flex-1"></div>
+        <div class="px-6 py-4 bg-purple-50 border-t text-right"><button onclick="closeLegal()" class="px-6 py-2 bg-purple-600 text-white rounded-2xl text-sm font-semibold hover:bg-purple-700">Cerrar</button></div>
+    </div>
+</div>
+
+<script>
+    // === COOKIES ===
+    function acceptCookies() {
+        document.getElementById('cookieBanner').style.display = 'none';
+        document.getElementById('mainContent').style.display = '';
+    }
+
+    // === TOPICS DATA ===
+    const topics = [
+        {
+            title: 'Mantenimiento Preventivo',
+            icon: 'fa-tools',
+            content: `<p>El mantenimiento preventivo es clave para evitar problemas costosos. En climas como el de Barranquilla (humedad alta, lluvias), revisa techos, canaletas y tuberías cada 6 meses.</p>
+            <ul class="list-disc pl-5 space-y-1"><li>Inspección visual de techos y canaletas antes de temporada de lluvias.</li><li>Revisa grifos y tuberías en busca de fugas.</li><li>Pinta paredes exteriores cada 3-5 años con pintura antihumedad.</li><li>Revisión eléctrica cada 2-3 años por un profesional.</li></ul>`
+        },
+        {
+            title: 'Limpieza y Organización',
+            icon: 'fa-broom',
+            content: `<p>Una casa limpia dura más. En climas cálidos y húmedos, la limpieza frecuente previene hongos y moho.</p>
+            <ul class="list-disc pl-5 space-y-1"><li>Rutina diaria de 15-20 minutos.</li><li>Usa vinagre blanco y bicarbonato para limpieza ecológica.</li><li>Ventila diariamente las habitaciones.</li><li>Organiza armarios cada 3-4 meses.</li></ul>`
+        },
+        {
+            title: 'Remodelación Inteligente',
+            icon: 'fa-paint-roller',
+            content: `<p>Una remodelación bien planificada aumenta el valor de tu propiedad. En Colombia, toda obra significativa requiere licencia.</p>
+            <ul class="list-disc pl-5 space-y-1"><li>Presupuesto +20% para imprevistos.</li><li>Tramita licencia de construcción en Curaduría Urbana.</li><li>Usa materiales resistentes a la humedad y salinidad.</li><li>Contrata profesionales con experiencia local.</li></ul>`
+        },
+        {
+            title: 'Impuestos Prediales',
+            icon: 'fa-file-invoice-dollar',
+            content: `<p>El Impuesto Predial Unificado es una obligación anual en Colombia. En Barranquilla lo administra la Alcaldía.</p>
+            <ul class="list-disc pl-5 space-y-1"><li>Paga en línea en el portal de la Alcaldía.</li><li>Aprovecha descuentos por pago anticipado (hasta 10%).</li><li>Si eres adulto mayor, verifica exenciones.</li><li>Mantén actualizada la información catastral.</li></ul>`
+        }
+    ];
+
+    function openModal(index) {
+        const t = topics[index];
+        document.getElementById('modalIcon').innerHTML = `<i class="fas ${t.icon} text-purple-700 text-2xl"></i>`;
+        document.getElementById('modalTitle').textContent = t.title;
+        document.getElementById('modalBody').innerHTML = t.content;
+        document.getElementById('topicModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('topicModal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    // === LEGAL ===
+    const legalData = {
+        politicas: {
+            title: 'Políticas de Privacidad',
+            content: `<p><strong>AdminCasa</strong> es un proyecto personal sin fines de lucro. No usamos cookies de seguimiento ni herramientas analíticas. Los datos del formulario se usan solo para responder consultas educativas, conforme a la Ley 1581 de 2012 (Colombia). Puedes solicitar la eliminación de tus datos escribiendo a <a href="mailto:em1885576@gmail.com" class="text-purple-600">em1885576@gmail.com</a>.</p>`
+        },
+        terminos: {
+            title: 'Términos y Condiciones',
+            content: `<p>Este sitio es <strong>educativo e informativo</strong>. No constituye asesoría profesional. No me responsabilizo por decisiones basadas en esta información. Para obras, consulta la normativa local (Decreto 1077 de 2015) y para impuestos, verifica en <a href="https://barranquilla.gov.co/hacienda/" target="_blank" class="text-purple-600">barranquilla.gov.co/hacienda</a>. El contenido es propiedad de Roger Enrique Mendez Rodriguez.</p>`
+        }
+    };
+
+    function openLegal(type) {
+        const data = legalData[type];
+        document.getElementById('legalTitle').textContent = data.title;
+        document.getElementById('legalBody').innerHTML = data.content;
+        document.getElementById('legalModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLegal() {
+        document.getElementById('legalModal').classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    // === CONTACT FORM ===
+    function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        form.innerHTML = `<div class="text-center py-6"><div class="w-14 h-14 bg-purple-100 rounded-full mx-auto flex items-center justify-center text-purple-600 text-3xl"><i class="fas fa-check-circle"></i></div><p class="font-semibold text-xl mt-3">¡Gracias por escribir!</p><p class="text-slate-500 text-sm">Te responderé pronto a tu correo.</p><button onclick="location.reload()" class="mt-4 px-6 py-2 border border-purple-300 rounded-2xl text-sm hover:bg-purple-50">Enviar otra consulta</button></div>`;
+    }
+
+    // Cerrar modales con Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { closeModal(); closeLegal(); }
+    });
+
+    // Inicializar (ocultar banner si ya se aceptó)
+    window.onload = function() {
+        // Si el usuario ya aceptó antes, mostrar contenido directamente.
+        // Por simplicidad, mantenemos el banner visible hasta aceptar.
+    };
+</script>
+
+</body>
+</html>
