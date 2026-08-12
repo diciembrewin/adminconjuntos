@@ -1,36 +1,30 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AdminCasa | Guías gratuitas para el cuidado del hogar en Colombia</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="AdminCasa es un proyecto educativo personal con información gratuita sobre mantenimiento, limpieza, remodelación, impuestos y cuidado del hogar en Colombia.">
+          content="TuCasaAlDía es un sitio informativo con contenidos y consejos generales sobre organización, mantenimiento y cuidado del hogar.">
 
-    <meta name="robots" content="index, follow">
-<!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="robots"
+          content="index, follow">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>TuCasaAlDía | Información para tu hogar</title>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
-        :root {
-            --primary: #7C3AED;
-            --primary-light: #A78BFA;
-            --primary-dark: #5B21B6;
-            --primary-bg: #F5F3FF;
-            --yellow-light: #FDE68A;
-            --yellow-bg: #FFFBEB;
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -38,1445 +32,3510 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: #F8F5FF;
-            color: #0f172a;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #f7f8fa;
+            color: #172033;
+            line-height: 1.6;
         }
 
-        .heading-serif {
-            font-family: 'Playfair Display', Georgia, serif;
+        body.cookie-open {
+            overflow: hidden;
         }
 
-        .nav-link {
-            transition: all 0.15s ease;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        .nav-link:hover {
-            color: #7C3AED;
+        button {
+            font: inherit;
+        }
+
+        :root {
+            --primary: #3156d3;
+            --primary-dark: #2443ad;
+            --primary-light: #eef2ff;
+
+            --text: #172033;
+            --muted: #657084;
+
+            --white: #ffffff;
+            --border: #e5e8ef;
+
+            --background: #f7f8fa;
+
+            --max-width: 1160px;
+            --radius: 18px;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: min(
+                calc(100% - 40px),
+                var(--max-width)
+            );
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(255,255,255,.96);
+
+            border-bottom:
+                1px solid var(--border);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            min-height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            font-size: 21px;
+            font-weight: 800;
+
+            letter-spacing: -.5px;
+
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: var(--primary);
+            color: white;
+
+            font-size: 18px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav a {
+            color: #566174;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: .2s;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .menu-button {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border:
+                1px solid var(--border);
+
+            background: white;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            color: var(--text);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: white;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .hero-content {
+            min-height: 500px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.15fr .85fr;
+
+            align-items: center;
+
+            gap: 70px;
+
+            padding:
+                70px 0;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                7px 12px;
+
+            margin-bottom: 22px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: .3px;
+        }
+
+        .hero-label i {
+            width: 7px;
+            height: 7px;
+
+            background: var(--primary);
+
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            max-width: 700px;
+
+            font-size:
+                clamp(40px, 5vw, 65px);
+
+            line-height: 1.06;
+
+            letter-spacing: -2.5px;
+
+            margin-bottom: 22px;
+
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text {
+            max-width: 610px;
+
+            color: var(--muted);
+
+            font-size: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding:
+                0 21px;
+
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            border: 1px solid transparent;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-1px);
         }
 
-        .section-header {
+        .button-secondary {
+            background: white;
+            color: var(--text);
+
+            border-color:
+                var(--border);
+        }
+
+        .button-secondary:hover {
+            border-color: #c8ced9;
+            background: #fafbfc;
+        }
+
+
+        /* =========================
+           HERO VISUAL
+        ========================= */
+
+        .hero-card {
             position: relative;
-            display: inline-block;
+
+            min-height: 360px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+
+            border:
+                1px solid #e1e6f4;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, #7C3AED, #A78BFA);
-            border-radius: 3px;
-        }
+        .house {
+            position: relative;
 
-        .topic-card {
-            transition: all 0.15s ease;
-        }
+            width: 210px;
+            height: 170px;
 
-        .topic-card:hover {
-            transform: translateY(-5px);
+            background: white;
+
+            border-radius:
+                14px 14px 10px 10px;
+
             box-shadow:
-                0 20px 25px -5px rgb(124 58 237 / 0.15),
-                0 8px 10px -6px rgb(124 58 237 / 0.1);
+                0 25px 60px
+                rgba(40,57,100,.12);
+        }
+
+        .roof {
+            position: absolute;
+
+            left: -20px;
+            top: -75px;
+
+            width: 250px;
+            height: 150px;
+
+            background: var(--primary);
+
+            transform:
+                rotate(45deg);
+
+            border-radius: 20px;
+        }
+
+        .door {
+            position: absolute;
+
+            bottom: 0;
+            left: 83px;
+
+            width: 46px;
+            height: 78px;
+
+            background:
+                #26344f;
+
+            border-radius:
+                8px 8px 0 0;
+        }
+
+        .window {
+            position: absolute;
+
+            width: 42px;
+            height: 42px;
+
+            top: 45px;
+
+            background:
+                #dbeafe;
+
+            border:
+                5px solid #26344f;
+
+            border-radius: 7px;
+        }
+
+        .window-one {
+            left: 25px;
+        }
+
+        .window-two {
+            right: 25px;
+        }
+
+
+        /* =========================
+           NOTICE
+        ========================= */
+
+        .notice {
+            padding: 18px 0;
+        }
+
+        .notice-box {
+            display: flex;
+
+            gap: 15px;
+
+            padding: 18px 20px;
+
+            background: #fff;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 14px;
+        }
+
+        .notice-icon {
+            flex-shrink: 0;
+
+            width: 36px;
+            height: 36px;
+
+            border-radius: 10px;
+
+            background:
+                #f1f5f9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--primary);
+
+            font-weight: 800;
+        }
+
+        .notice strong {
+            display: block;
+
+            color: var(--text);
+
+            font-size: 14px;
+
+            margin-bottom: 2px;
+        }
+
+        .notice p {
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            padding:
+                80px 0;
+        }
+
+        .section-header {
+            max-width: 650px;
+
+            margin-bottom: 38px;
+        }
+
+        .section-tag {
+            display: inline-block;
+
+            color: var(--primary);
+
+            background:
+                var(--primary-light);
+
+            padding:
+                6px 11px;
+
+            border-radius: 30px;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+            margin-bottom: 12px;
+        }
+
+        .section h2 {
+            font-size:
+                clamp(30px,4vw,43px);
+
+            line-height: 1.15;
+
+            letter-spacing:
+                -1.3px;
+
+            color: #111827;
+
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius);
+
+            padding: 27px;
+
+            transition:
+                transform .25s,
+                box-shadow .25s,
+                border-color .25s;
+        }
+
+        .card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #d5daf0;
+
+            box-shadow:
+                0 18px 45px
+                rgba(20,30,60,.07);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+
+            margin-bottom: 9px;
+
+            color: #172033;
+        }
+
+        .card p {
+            font-size: 14px;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           ARTICLES
+        ========================= */
+
+        .articles {
+            background: white;
+
+            border-top:
+                1px solid var(--border);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .article-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 20px;
+        }
+
+        .article {
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius);
+
+            overflow: hidden;
+
+            background: white;
+        }
+
+        .article-top {
+            height: 125px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color:
+                var(--primary);
+
+            font-size: 34px;
+        }
+
+        .article-body {
+            padding: 23px;
+        }
+
+        .article-label {
+            font-size: 11px;
+
+            font-weight: 800;
+
+            color:
+                var(--primary);
+
+            text-transform: uppercase;
+
+            letter-spacing: .5px;
+
+            margin-bottom: 7px;
+        }
+
+        .article h3 {
+            font-size: 18px;
+
+            line-height: 1.35;
+
+            margin-bottom: 8px;
+        }
+
+        .article p {
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--muted);
+
+            margin-bottom: 17px;
+
+            font-size: 15px;
+        }
+
+        .about-list {
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius);
+
+            padding: 28px;
+        }
+
+        .about-item {
+            display: flex;
+
+            gap: 14px;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .about-item:last-child {
+            border-bottom: none;
+        }
+
+        .check {
+            width: 29px;
+            height: 29px;
+
+            flex-shrink: 0;
+
+            border-radius: 8px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .about-item strong {
+            display: block;
+
+            font-size: 14px;
+
+            margin-bottom: 2px;
+        }
+
+        .about-item span {
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            background:
+                #172033;
+
+            color: white;
+        }
+
+        .contact-inner {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact p {
+            color:
+                #aeb7c8;
+
+            max-width: 530px;
+        }
+
+        .contact-box {
+            background:
+                rgba(255,255,255,.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            border-radius:
+                var(--radius);
+
+            padding: 28px;
+        }
+
+        .contact-row {
+            display: flex;
+
+            gap: 14px;
+
+            padding: 14px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.09);
+        }
+
+        .contact-row:last-child {
+            border-bottom: none;
+        }
+
+        .contact-row-icon {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-row strong {
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 2px;
+        }
+
+        .contact-row span {
+            color: #aeb7c8;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background:
+                #101622;
+
+            color:
+                #8993a5;
+
+            padding:
+                35px 0;
+        }
+
+        .footer-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding-bottom: 28px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+        }
+
+        .footer-brand {
+            max-width: 350px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 70px;
+        }
+
+        .footer-links h4 {
+            color: white;
+
+            font-size: 12px;
+
+            margin-bottom: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .5px;
+        }
+
+        .footer-links a,
+        .footer-links button {
+            display: block;
+
+            background: none;
+            border: none;
+
+            color: #8993a5;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+
+            text-align: left;
+        }
+
+        .footer-links a:hover,
+        .footer-links button:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           MODALES
+        ========================= */
+
+        .modal-bg {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 500;
+
+            background:
+                rgba(15,23,42,.65);
+
+            padding: 20px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-bg.active {
+            display: flex;
         }
 
         .modal {
-            animation: modalPop 0.15s ease-out forwards;
+            width: min(650px,100%);
+
+            max-height:
+                85vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.25);
+
+            animation:
+                modalIn .2s ease;
         }
 
-        @keyframes modalPop {
+        @keyframes modalIn {
+
             from {
                 opacity: 0;
-                transform: scale(0.97) translateY(10px);
+                transform:
+                    translateY(15px)
+                    scale(.98);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1) translateY(0);
+                transform:
+                    translateY(0)
+                    scale(1);
             }
+
         }
 
-        .tip-item {
-            transition: all 0.15s ease;
+        .modal-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 22px 25px;
+
+            border-bottom:
+                1px solid var(--border);
         }
 
-        .tip-item:hover {
-            background-color: #F5F3FF;
-            transform: translateX(4px);
+        .modal-header h3 {
+            font-size: 19px;
         }
 
-        .disclaimer-box {
-            background: linear-gradient(
-                135deg,
-                #FFFBEB 0%,
-                #FEF3C7 100%
-            );
-            border-left: 5px solid #D97706;
+        .modal-close {
+            width: 35px;
+            height: 35px;
+
+            border: none;
+
+            background:
+                #f1f5f9;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            color: #667085;
         }
 
-        .clean-shadow {
+        .modal-content {
+            padding: 25px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .modal-content h4 {
+            color: var(--text);
+
+            margin:
+                18px 0 7px;
+        }
+
+        .modal-content h4:first-child {
+            margin-top: 0;
+        }
+
+        .modal-content p {
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           COOKIE BANNER
+        ========================= */
+
+        .cookie-banner {
+            position: fixed;
+
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 1000;
+
+            max-width: 1080px;
+
+            margin: auto;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #dfe3eb;
+
+            border-radius:
+                18px;
+
             box-shadow:
-                0 10px 15px -3px rgb(124 58 237 / 0.08),
-                0 4px 6px -4px rgb(124 58 237 / 0.05);
-        }
+                0 20px 60px
+                rgba(15,23,42,.18);
 
-        .no-js-message {
+            padding: 20px;
+
             display: none;
         }
 
-        .js .no-js-message {
-            display: none;
+        .cookie-banner.show {
+            display: block;
         }
+
+        .cookie-content {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .cookie-icon {
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                var(--primary-light);
+
+            font-size: 22px;
+        }
+
+        .cookie-text {
+            flex: 1;
+        }
+
+        .cookie-text h3 {
+            font-size: 16px;
+
+            color: var(--text);
+
+            margin-bottom: 4px;
+        }
+
+        .cookie-text p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.55;
+        }
+
+        .cookie-text a {
+            color: var(--primary);
+
+            text-decoration: underline;
+        }
+
+        .cookie-actions {
+            display: flex;
+
+            gap: 8px;
+
+            flex-shrink: 0;
+
+            flex-wrap: wrap;
+        }
+
+        .cookie-button {
+            min-height: 42px;
+
+            padding:
+                0 15px;
+
+            border-radius: 9px;
+
+            border:
+                1px solid var(--border);
+
+            background: white;
+
+            color: var(--text);
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        .cookie-button:hover {
+            background: #f7f8fa;
+        }
+
+        .cookie-button.primary {
+            background:
+                var(--primary);
+
+            color: white;
+
+            border-color:
+                var(--primary);
+        }
+
+        .cookie-button.primary:hover {
+            background:
+                var(--primary-dark);
+        }
+
+
+        /* =========================
+           COOKIE SETTINGS
+        ========================= */
+
+        .cookie-settings {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1100;
+
+            background:
+                rgba(15,23,42,.65);
+
+            padding: 20px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cookie-settings.show {
+            display: flex;
+        }
+
+        .cookie-panel {
+            width:
+                min(620px,100%);
+
+            max-height:
+                90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.25);
+        }
+
+        .cookie-panel-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding:
+                22px 25px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .cookie-panel-header h3 {
+            font-size: 19px;
+        }
+
+        .cookie-panel-close {
+            width: 35px;
+            height: 35px;
+
+            border: none;
+
+            background:
+                #f1f5f9;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            color: #667085;
+        }
+
+        .cookie-panel-body {
+            padding: 25px;
+        }
+
+        .cookie-intro {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+        .cookie-category {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding:
+                17px 0;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .cookie-category:last-of-type {
+            border-bottom: none;
+        }
+
+        .cookie-category h4 {
+            color: var(--text);
+
+            font-size: 14px;
+
+            margin-bottom: 3px;
+        }
+
+        .cookie-category p {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            max-width: 450px;
+        }
+
+        .cookie-status {
+            font-size: 11px;
+
+            font-weight: 800;
+
+            color: var(--primary);
+
+            white-space: nowrap;
+        }
+
+        .cookie-toggle {
+            position: relative;
+
+            width: 45px;
+            height: 25px;
+
+            flex-shrink: 0;
+        }
+
+        .cookie-toggle input {
+            opacity: 0;
+
+            width: 0;
+            height: 0;
+        }
+
+        .cookie-slider {
+            position: absolute;
+
+            inset: 0;
+
+            cursor: pointer;
+
+            background:
+                #cbd2df;
+
+            border-radius: 30px;
+
+            transition: .2s;
+        }
+
+        .cookie-slider::before {
+            content: "";
+
+            position: absolute;
+
+            width: 19px;
+            height: 19px;
+
+            left: 3px;
+            top: 3px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            transition: .2s;
+
+            box-shadow:
+                0 1px 3px
+                rgba(0,0,0,.15);
+        }
+
+        .cookie-toggle input:checked
+        + .cookie-slider {
+            background:
+                var(--primary);
+        }
+
+        .cookie-toggle input:checked
+        + .cookie-slider::before {
+            transform:
+                translateX(20px);
+        }
+
+        .cookie-toggle input:disabled
+        + .cookie-slider {
+            opacity: .65;
+
+            cursor: not-allowed;
+        }
+
+        .cookie-panel-footer {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 9px;
+
+            padding:
+                18px 25px;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+
+        /* =========================
+           COOKIE FLOATING BUTTON
+        ========================= */
+
+        .cookie-manage {
+            position: fixed;
+
+            left: 15px;
+            bottom: 15px;
+
+            z-index: 900;
+
+            width: 43px;
+            height: 43px;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+
+            background: white;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px
+                rgba(15,23,42,.12);
+
+            font-size: 19px;
+        }
+
+        .cookie-manage.show {
+            display: flex;
+        }
+
+        .cookie-manage:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav {
+                display: none;
+
+                position: absolute;
+
+                top: 72px;
+                left: 0;
+                right: 0;
+
+                background: white;
+
+                border-bottom:
+                    1px solid var(--border);
+
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav a {
+                padding: 13px 5px;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+
+                padding:
+                    55px 0;
+            }
+
+            .hero-card {
+                min-height: 280px;
+            }
+
+            .cards,
+            .article-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about,
+            .contact-inner {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                gap: 45px;
+            }
+
+            .cookie-content {
+                align-items: flex-start;
+            }
+
+            .cookie-actions {
+                flex-direction: column;
+            }
+
+        }
+
+
+        @media (max-width: 620px) {
+
+            .container {
+                width:
+                    min(
+                        calc(100% - 28px),
+                        var(--max-width)
+                    );
+            }
+
+            .header-inner {
+                min-height: 64px;
+            }
+
+            .nav {
+                top: 64px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+
+                letter-spacing:
+                    -1.8px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .cards,
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding:
+                    60px 0;
+            }
+
+            .notice-box {
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                flex-direction: column;
+
+                gap: 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .cookie-banner {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+
+                padding: 17px;
+            }
+
+            .cookie-content {
+                display: block;
+            }
+
+            .cookie-icon {
+                margin-bottom: 12px;
+            }
+
+            .cookie-actions {
+                margin-top: 15px;
+
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .cookie-button {
+                width: 100%;
+            }
+
+            .cookie-button.primary {
+                grid-column:
+                    span 2;
+            }
+
+            .cookie-category {
+                align-items: flex-start;
+            }
+
+            .cookie-panel-footer {
+                flex-direction: column;
+            }
+
+            .cookie-panel-footer .cookie-button {
+                width: 100%;
+            }
+
+        }
+
     </style>
-
-    <script>
-        document.documentElement.classList.add('js');
-    </script>
 </head>
+
 
 <body>
 
-<!-- CONTENIDO PRINCIPAL
-     Importante:
-     El contenido es visible desde la carga inicial.
-     No depende de aceptar cookies ni de ejecutar JavaScript.
--->
 
-<main id="main-content">
+<!-- =========================
+     HEADER
+========================= -->
 
-    <!-- NAVBAR -->
-    <nav class="bg-white border-b border-purple-100 sticky top-0 z-50">
-        <div class="max-w-screen-xl mx-auto px-6">
-            <div class="flex justify-between items-center h-20">
+<header class="header">
 
-                <!-- Logo -->
-                <a href="#inicio"
-                   class="flex items-center gap-x-3"
-                   aria-label="AdminCasa - Inicio">
+    <div class="container header-inner">
 
-                    <div class="w-11 h-11 bg-purple-600 rounded-2xl flex items-center justify-center shadow-inner">
-                        <i class="fas fa-home text-white text-2xl"></i>
+        <a href="#inicio"
+           class="logo">
+
+            <div class="logo-icon">
+                ⌂
+            </div>
+
+            TuCasa<span>AlDía</span>
+
+        </a>
+
+
+        <nav class="nav"
+             id="mainNav">
+
+            <a href="#inicio">
+                Inicio
+            </a>
+
+            <a href="#guias">
+                Guías
+            </a>
+
+            <a href="#articulos">
+                Artículos
+            </a>
+
+            <a href="#sobre-nosotros">
+                Sobre nosotros
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </nav>
+
+
+        <button class="menu-button"
+                onclick="toggleMenu()"
+                aria-label="Abrir menú">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="inicio">
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+
+            <div>
+
+                <div class="hero-label">
+
+                    <i></i>
+
+                    INFORMACIÓN PARA EL HOGAR
+
+                </div>
+
+
+                <h1>
+
+                    Ideas sencillas para
+                    <span>cuidar tu casa.</span>
+
+                </h1>
+
+
+                <p class="hero-text">
+
+                    TuCasaAlDía reúne información general,
+                    consejos y contenidos prácticos relacionados
+                    con la organización, mantenimiento y cuidado
+                    de la vivienda.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#guias"
+                       class="button button-primary">
+
+                        Ver guías
+
+                    </a>
+
+
+                    <a href="#sobre-nosotros"
+                       class="button button-secondary">
+
+                        Conocer el sitio
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card"
+                 aria-hidden="true">
+
+                <div class="house">
+
+                    <div class="roof"></div>
+
+                    <div class="window window-one"></div>
+
+                    <div class="window window-two"></div>
+
+                    <div class="door"></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         AVISO
+    ========================= -->
+
+    <section class="notice">
+
+        <div class="container">
+
+            <div class="notice-box">
+
+                <div class="notice-icon">
+                    i
+                </div>
+
+                <div>
+
+                    <strong>
+                        Información de carácter general
+                    </strong>
+
+                    <p>
+
+                        Los contenidos de TuCasaAlDía tienen
+                        finalidad informativa. Para situaciones
+                        específicas, consulta fuentes oficiales
+                        o profesionales calificados.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         GUIAS
+    ========================= -->
+
+    <section class="section"
+             id="guias">
+
+        <div class="container">
+
+
+            <div class="section-header">
+
+                <div class="section-tag">
+                    GUÍAS
+                </div>
+
+                <h2>
+                    Temas para conocer mejor tu hogar
+                </h2>
+
+                <p>
+                    Contenido organizado por categorías para
+                    encontrar información de forma sencilla.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        🔧
+                    </div>
+
+                    <h3>
+                        Mantenimiento
+                    </h3>
+
+                    <p>
+                        Información general sobre revisiones,
+                        conservación y cuidado de diferentes
+                        elementos de una vivienda.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Limpieza
+                    </h3>
+
+                    <p>
+                        Ideas y recomendaciones generales para
+                        organizar las tareas de limpieza del hogar.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ▦
+                    </div>
+
+                    <h3>
+                        Organización
+                    </h3>
+
+                    <p>
+                        Consejos para distribuir, ordenar y
+                        aprovechar mejor los diferentes espacios.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Mejoras
+                    </h3>
+
+                    <p>
+                        Aspectos generales que conviene considerar
+                        antes de realizar cambios en una vivienda.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ♧
+                    </div>
+
+                    <h3>
+                        Jardín y exteriores
+                    </h3>
+
+                    <p>
+                        Información básica sobre el cuidado
+                        general de espacios exteriores.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        Seguridad
+                    </h3>
+
+                    <p>
+                        Hábitos generales de prevención para
+                        mantener los espacios del hogar organizados.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ARTICULOS
+    ========================= -->
+
+    <section class="section articles"
+             id="articulos">
+
+        <div class="container">
+
+
+            <div class="section-header">
+
+                <div class="section-tag">
+                    CONTENIDO
+                </div>
+
+                <h2>
+                    Información destacada
+                </h2>
+
+                <p>
+                    Algunos temas generales para comenzar
+                    a conocer y cuidar mejor los espacios.
+                </p>
+
+            </div>
+
+
+            <div class="article-grid">
+
+
+                <article class="article">
+
+                    <div class="article-top">
+                        🔧
+                    </div>
+
+                    <div class="article-body">
+
+                        <div class="article-label">
+                            Mantenimiento
+                        </div>
+
+                        <h3>
+                            Revisiones básicas de una vivienda
+                        </h3>
+
+                        <p>
+                            Conoce algunos elementos que pueden
+                            revisarse periódicamente para detectar
+                            señales de deterioro.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="article">
+
+                    <div class="article-top">
+                        ✦
+                    </div>
+
+                    <div class="article-body">
+
+                        <div class="article-label">
+                            Organización
+                        </div>
+
+                        <h3>
+                            Cómo organizar mejor los espacios
+                        </h3>
+
+                        <p>
+                            Algunas ideas sencillas para mantener
+                            las habitaciones ordenadas y funcionales.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="article">
+
+                    <div class="article-top">
+                        ♢
+                    </div>
+
+                    <div class="article-body">
+
+                        <div class="article-label">
+                            Hogar
+                        </div>
+
+                        <h3>
+                            Hábitos para cuidar la vivienda
+                        </h3>
+
+                        <p>
+                            Pequeños hábitos cotidianos pueden
+                            facilitar el cuidado general del hogar.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SOBRE NOSOTROS
+    ========================= -->
+
+    <section class="section"
+             id="sobre-nosotros">
+
+        <div class="container about">
+
+
+            <div class="about-text">
+
+                <div class="section-tag">
+                    SOBRE NOSOTROS
+                </div>
+
+                <h2>
+                    ¿Qué es TuCasaAlDía?
+                </h2>
+
+                <p>
+                    TuCasaAlDía es un sitio web informativo
+                    dedicado a recopilar y presentar contenidos
+                    generales relacionados con el hogar.
+                </p>
+
+                <p>
+                    El proyecto busca ofrecer una experiencia
+                    sencilla para que los visitantes puedan
+                    consultar información sobre organización,
+                    mantenimiento, limpieza y otros temas
+                    relacionados con la vivienda.
+                </p>
+
+                <p>
+                    El contenido tiene carácter general y
+                    educativo. No representa una oferta de
+                    servicios profesionales.
+                </p>
+
+            </div>
+
+
+            <div class="about-list">
+
+
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
                     </div>
 
                     <div>
-                        <span class="font-bold text-3xl tracking-tighter">Admin</span>
-                        <span class="font-bold text-3xl tracking-tighter text-purple-600">Casa</span>
-                    </div>
-                </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                    <a href="#quienes-somos"
-                       class="nav-link text-slate-600">
-                        Quiénes somos
-                    </a>
-
-                    <a href="#porque-gratis"
-                       class="nav-link text-slate-600">
-                        Por qué es gratis
-                    </a>
-
-                    <a href="#temas"
-                       class="nav-link text-slate-600">
-                        Guías prácticas
-                    </a>
-
-                    <a href="#contacto"
-                       class="nav-link text-slate-600">
-                        Contacto
-                    </a>
-                </div>
-
-                <div class="hidden md:flex items-center gap-x-3">
-
-                    <button type="button"
-                            onclick="showLegalModal('politicas')"
-                            class="px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-2xl transition-colors">
-                        Políticas
-                    </button>
-
-                    <button type="button"
-                            onclick="showLegalModal('terminos')"
-                            class="px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-2xl transition-colors">
-                        Términos
-                    </button>
-
-                    <a href="#contacto"
-                       class="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-2xl transition-all flex items-center gap-x-2 shadow-sm">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contacto</span>
-                    </a>
-                </div>
-
-                <!-- Mobile -->
-                <button id="mobile-menu-btn"
-                        type="button"
-                        class="md:hidden w-11 h-11 flex items-center justify-center text-slate-600 hover:bg-purple-50 rounded-2xl"
-                        onclick="toggleMobileMenu()"
-                        aria-label="Abrir menú">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobile-menu"
-             class="hidden md:hidden border-t bg-white px-6 py-4">
-
-            <div class="flex flex-col gap-y-1 text-sm font-medium">
-
-                <a href="#quienes-somos"
-                   class="py-3 px-4 hover:bg-purple-50 rounded-2xl text-slate-600"
-                   onclick="toggleMobileMenu()">
-                    Quiénes somos
-                </a>
-
-                <a href="#porque-gratis"
-                   class="py-3 px-4 hover:bg-purple-50 rounded-2xl text-slate-600"
-                   onclick="toggleMobileMenu()">
-                    Por qué es gratis
-                </a>
-
-                <a href="#temas"
-                   class="py-3 px-4 hover:bg-purple-50 rounded-2xl text-slate-600"
-                   onclick="toggleMobileMenu()">
-                    Guías prácticas
-                </a>
-
-                <a href="#contacto"
-                   class="py-3 px-4 hover:bg-purple-50 rounded-2xl text-slate-600"
-                   onclick="toggleMobileMenu()">
-                    Contacto
-                </a>
-
-                <div class="pt-3 mt-2 border-t flex flex-col gap-y-2">
-
-                    <button type="button"
-                            onclick="showLegalModal('politicas'); toggleMobileMenu()"
-                            class="text-left py-3 px-4 text-slate-600 hover:bg-purple-50 rounded-2xl">
-                        Políticas de Privacidad
-                    </button>
-
-                    <button type="button"
-                            onclick="showLegalModal('terminos'); toggleMobileMenu()"
-                            class="text-left py-3 px-4 text-slate-600 hover:bg-purple-50 rounded-2xl">
-                        Términos y Condiciones
-                    </button>
-
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <header id="inicio"
-            class="relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 text-white overflow-hidden">
-
-        <div class="absolute inset-0 opacity-30"
-             aria-hidden="true"
-             style="
-             background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px);
-             background-size: 8px 8px;">
-        </div>
-
-        <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24 relative z-10">
-
-            <div class="max-w-3xl">
-
-                <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-3xl mb-6 border border-white/20">
-
-                    <div class="w-2 h-2 bg-yellow-300 rounded-full"
-                         aria-hidden="true">
-                    </div>
-
-                    <span class="text-yellow-200 text-sm font-medium tracking-wider">
-                        PROYECTO EDUCATIVO • PERSONAL Y GRATUITO
-                    </span>
-                </div>
-
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05] mb-6">
-                    Cuida tu casa.<br>
-                    <span class="text-yellow-300">
-                        Protege tu patrimonio.
-                    </span>
-                </h1>
-
-                <p class="max-w-lg text-xl text-purple-100 mb-10">
-                    Guía práctica y gratuita sobre mantenimiento, limpieza,
-                    remodelación y cuidado del hogar en Colombia.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4">
-
-                    <a href="#temas"
-                       class="inline-flex items-center justify-center gap-x-3 bg-white text-purple-800 hover:bg-purple-50 font-semibold px-8 h-14 rounded-2xl transition-all text-base shadow-xl">
-                        <span>Explorar las guías</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-
-                    <a href="#quienes-somos"
-                       class="inline-flex items-center justify-center gap-x-3 border border-white/30 hover:bg-white/10 font-medium px-8 h-14 rounded-2xl transition-all text-base">
-                        Conocer el proyecto
-                    </a>
-
-                </div>
-
-                <div class="mt-8 flex items-center gap-x-3 text-sm text-purple-200">
-                    <i class="fas fa-check-circle text-purple-300"></i>
-                    <span>
-                        Gratuito • Sin registro • Sin venta de productos
-                    </span>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="absolute bottom-0 right-0 hidden lg:block"
-             aria-hidden="true">
-            <div class="w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
-        </div>
-    </header>
-
-    <!-- AVISO -->
-    <div class="max-w-screen-xl mx-auto px-6 -mt-6 relative z-20">
-
-        <div class="disclaimer-box border border-yellow-200 rounded-3xl p-6 md:p-7 shadow-sm">
-
-            <div class="flex flex-col md:flex-row gap-4 md:items-start">
-
-                <div class="flex-shrink-0">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-2xl flex items-center justify-center">
-                        <i class="fas fa-circle-info text-yellow-600 text-2xl"></i>
-                    </div>
-                </div>
-
-                <div class="flex-1">
-
-                    <h2 class="font-semibold text-yellow-800 text-lg mb-2">
-                        AVISO IMPORTANTE — CONTENIDO EDUCATIVO
-                    </h2>
-
-                    <p class="text-yellow-700 text-[15px] leading-relaxed">
-                        AdminCasa es un proyecto personal de carácter educativo
-                        e informativo. No es una empresa de mantenimiento,
-                        limpieza, remodelación o servicios profesionales.
-                        No vende productos ni ofrece servicios mediante este sitio.
-                    </p>
-
-                    <p class="mt-3 text-sm text-yellow-700 leading-relaxed">
-                        La información publicada es general y no sustituye
-                        el asesoramiento de profesionales cualificados ni
-                        la información oficial de las autoridades colombianas.
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- QUIÉNES SOMOS -->
-    <section id="quienes-somos"
-             class="max-w-screen-xl mx-auto px-6 pt-16 pb-12">
-
-        <div class="grid md:grid-cols-12 gap-x-12 gap-y-10 items-center">
-
-            <div class="md:col-span-5">
-
-                <div>
-                    <div class="inline-block px-4 py-1 bg-purple-100 text-purple-700 text-xs font-semibold tracking-[1.5px] rounded-2xl mb-4">
-                        EL PROYECTO
-                    </div>
-
-                    <h2 class="section-header text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 mb-6">
-                        Quién está detrás
-                    </h2>
-
-                    <p class="text-lg text-slate-600">
-                        AdminCasa es un proyecto personal creado para
-                        compartir información práctica sobre el cuidado
-                        responsable de una vivienda.
-                    </p>
-                </div>
-            </div>
-
-            <div class="md:col-span-7">
-
-                <div class="bg-white rounded-3xl p-8 md:p-10 clean-shadow border border-purple-100">
-
-                    <div class="flex flex-col gap-6">
-
-                        <div>
-                            <h3 class="font-bold text-2xl text-slate-900 mb-3">
-                                Roger Enrique Mendez Rodriguez
-                            </h3>
-
-                            <p class="text-slate-600 leading-relaxed">
-                                Soy el creador y responsable de este proyecto.
-                                Vivo en Medellín, Colombia, y desarrollé
-                                AdminCasa como un espacio personal para
-                                organizar y compartir conocimientos relacionados
-                                con el mantenimiento y cuidado del hogar.
-                            </p>
-                        </div>
-
-                        <div class="flex items-start gap-3 text-purple-700 bg-purple-50 rounded-2xl p-5">
-                            <i class="fas fa-location-dot mt-1"></i>
-
-                            <div>
-                                <strong>Ubicación del responsable:</strong>
-                                <p class="text-purple-700 mt-1">
-                                    Medellín, Antioquia, Colombia.
-                                </p>
-                            </div>
-                        </div>
-
-                        <p class="text-slate-600 leading-relaxed">
-                            Algunas guías hacen referencia específicamente a
-                            Barranquilla porque determinados temas, como clima,
-                            mantenimiento preventivo, impuestos locales y
-                            normativa urbana, requieren información contextual.
-                            Cuando corresponde, se recomienda consultar siempre
-                            la fuente oficial de la autoridad competente.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- POR QUÉ ES GRATIS -->
-    <section id="porque-gratis"
-             class="bg-white border-y border-purple-100 py-14">
-
-        <div class="max-w-screen-xl mx-auto px-6">
-
-            <div class="max-w-3xl mx-auto text-center mb-10">
-
-                <div class="inline-block px-4 py-1 bg-purple-100 text-purple-700 text-xs font-semibold tracking-[1.5px] rounded-2xl mb-4">
-                    PROPÓSITO
-                </div>
-
-                <h2 class="section-header text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 mb-4">
-                    ¿Por qué es gratuito?
-                </h2>
-
-                <p class="text-xl text-slate-600">
-                    Porque considero útil que la información básica sobre
-                    el cuidado de una vivienda sea accesible.
-                </p>
-
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-                <div class="bg-purple-50 rounded-3xl p-7 border border-purple-100">
-
-                    <div class="w-12 h-12 bg-purple-200 rounded-2xl flex items-center justify-center mb-5">
-                        <i class="fas fa-heart text-purple-600 text-2xl"></i>
-                    </div>
-
-                    <h3 class="font-semibold text-xl mb-3">
-                        Proyecto personal
-                    </h3>
-
-                    <p class="text-slate-600 leading-relaxed">
-                        El contenido se publica como iniciativa personal
-                        y educativa.
-                    </p>
-                </div>
-
-                <div class="bg-purple-50 rounded-3xl p-7 border border-purple-100">
-
-                    <div class="w-12 h-12 bg-purple-200 rounded-2xl flex items-center justify-center mb-5">
-                        <i class="fas fa-book-open text-purple-600 text-2xl"></i>
-                    </div>
-
-                    <h3 class="font-semibold text-xl mb-3">
-                        Sin venta de servicios
-                    </h3>
-
-                    <p class="text-slate-600 leading-relaxed">
-                        El sitio no ofrece servicios de mantenimiento,
-                        limpieza, construcción ni remodelación.
-                    </p>
-                </div>
-
-                <div class="bg-purple-50 rounded-3xl p-7 border border-purple-100">
-
-                    <div class="w-12 h-12 bg-purple-200 rounded-2xl flex items-center justify-center mb-5">
-                        <i class="fas fa-seedling text-purple-600 text-2xl"></i>
-                    </div>
-
-                    <h3 class="font-semibold text-xl mb-3">
-                        Información práctica
-                    </h3>
-
-                    <p class="text-slate-600 leading-relaxed">
-                        El objetivo es explicar conceptos y prácticas
-                        generales de forma sencilla.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="mt-10 text-center">
-
-                <div class="inline-flex items-center gap-x-2 text-sm font-medium text-purple-700 bg-purple-50 px-5 py-2 rounded-3xl">
-                    <i class="fas fa-check-double"></i>
-                    <span>Contenido educativo • Sin venta de servicios</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- GUÍAS -->
-    <section id="temas"
-             class="max-w-screen-xl mx-auto px-6 pt-16 pb-20">
-
-        <div class="text-center mb-12">
-
-            <div class="inline-block px-4 py-1 bg-purple-100 text-purple-700 text-xs font-semibold tracking-[1.5px] rounded-2xl mb-4">
-                CONOCIMIENTO PRÁCTICO
-            </div>
-
-            <h2 class="section-header text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 mb-4">
-                Guías prácticas para tu hogar
-            </h2>
-
-            <p class="max-w-2xl mx-auto text-lg text-slate-600">
-                Información general sobre mantenimiento, limpieza,
-                remodelación, obligaciones relacionadas con inmuebles
-                y cuidado integral del hogar.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-
-            <article onclick="showTopicModal(0)"
-                     class="topic-card group bg-white border border-purple-200 hover:border-purple-400 rounded-3xl p-6 cursor-pointer flex flex-col">
-
-                <div class="w-14 h-14 bg-purple-100 group-hover:bg-purple-200 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-tools text-purple-700 text-2xl"></i>
-                </div>
-
-                <h3 class="font-semibold text-2xl tracking-tight mb-3">
-                    Mantenimiento Preventivo
-                </h3>
-
-                <p class="text-slate-600 flex-1">
-                    Inspecciones, techos, tuberías, pintura y sistemas
-                    eléctricos para prevenir problemas.
-                </p>
-
-                <div class="mt-6 text-purple-700 font-semibold text-sm">
-                    Ver guía
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </article>
-
-            <article onclick="showTopicModal(1)"
-                     class="topic-card group bg-white border border-purple-200 hover:border-purple-400 rounded-3xl p-6 cursor-pointer flex flex-col">
-
-                <div class="w-14 h-14 bg-purple-100 group-hover:bg-purple-200 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-broom text-purple-700 text-2xl"></i>
-                </div>
-
-                <h3 class="font-semibold text-2xl tracking-tight mb-3">
-                    Limpieza y Organización
-                </h3>
-
-                <p class="text-slate-600 flex-1">
-                    Rutinas de limpieza y organización adaptadas
-                    a diferentes condiciones climáticas.
-                </p>
-
-                <div class="mt-6 text-purple-700 font-semibold text-sm">
-                    Ver guía
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </article>
-
-            <article onclick="showTopicModal(2)"
-                     class="topic-card group bg-white border border-purple-200 hover:border-purple-400 rounded-3xl p-6 cursor-pointer flex flex-col">
-
-                <div class="w-14 h-14 bg-purple-100 group-hover:bg-purple-200 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-paint-roller text-purple-700 text-2xl"></i>
-                </div>
-
-                <h3 class="font-semibold text-2xl tracking-tight mb-3">
-                    Remodelación
-                </h3>
-
-                <p class="text-slate-600 flex-1">
-                    Planificación de mejoras, presupuestos y
-                    consideraciones legales generales.
-                </p>
-
-                <div class="mt-6 text-purple-700 font-semibold text-sm">
-                    Ver guía
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </article>
-
-            <article onclick="showTopicModal(3)"
-                     class="topic-card group bg-white border border-purple-200 hover:border-purple-400 rounded-3xl p-6 cursor-pointer flex flex-col">
-
-                <div class="w-14 h-14 bg-purple-100 group-hover:bg-purple-200 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-file-invoice-dollar text-purple-700 text-2xl"></i>
-                </div>
-
-                <h3 class="font-semibold text-2xl tracking-tight mb-3">
-                    Impuestos Prediales
-                </h3>
-
-                <p class="text-slate-600 flex-1">
-                    Información general sobre el impuesto predial
-                    y dónde consultar información oficial.
-                </p>
-
-                <div class="mt-6 text-purple-700 font-semibold text-sm">
-                    Ver guía
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </article>
-
-            <article onclick="showTopicModal(4)"
-                     class="topic-card group bg-white border border-purple-200 hover:border-purple-400 rounded-3xl p-6 cursor-pointer flex flex-col">
-
-                <div class="w-14 h-14 bg-purple-100 group-hover:bg-purple-200 rounded-2xl flex items-center justify-center mb-6">
-                    <i class="fas fa-shield-halved text-purple-700 text-2xl"></i>
-                </div>
-
-                <h3 class="font-semibold text-2xl tracking-tight mb-3">
-                    Cuidado y Seguridad
-                </h3>
-
-                <p class="text-slate-600 flex-1">
-                    Jardines, plagas, consumo de energía,
-                    seguridad y prevención de riesgos.
-                </p>
-
-                <div class="mt-6 text-purple-700 font-semibold text-sm">
-                    Ver guía
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </article>
-
-        </div>
-
-        <div class="text-center mt-10">
-
-            <p class="text-sm text-slate-500 max-w-2xl mx-auto">
-                La información es general y educativa. Para decisiones
-                técnicas, legales, tributarias o de seguridad, consulta
-                profesionales y fuentes oficiales.
-            </p>
-
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto"
-             class="bg-white border-t border-purple-100 py-16">
-
-        <div class="max-w-screen-xl mx-auto px-6">
-
-            <div class="grid lg:grid-cols-2 gap-x-16 gap-y-12">
-
-                <div>
-
-                    <div class="inline-block px-4 py-1 bg-purple-100 text-purple-700 text-xs font-semibold tracking-[1.5px] rounded-2xl mb-4">
-                        CONTACTO
-                    </div>
-
-                    <h2 class="section-header text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 mb-6">
-                        Escríbeme
-                    </h2>
-
-                    <p class="text-lg text-slate-600 leading-relaxed mb-8">
-                        Si tienes una pregunta relacionada con el contenido
-                        educativo del sitio, puedes comunicarte por correo.
-                    </p>
-
-                    <div class="bg-purple-50 border border-purple-200 rounded-3xl p-7">
-
-                        <div class="flex items-start gap-4">
-
-                            <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-purple-600 text-xl"></i>
-                            </div>
-
-                            <div>
-
-                                <h3 class="font-semibold text-lg mb-1">
-                                    Correo electrónico
-                                </h3>
-
-                                <a href="mailto:em1885576@gmail.com"
-                                   class="text-purple-600 hover:underline font-medium break-all">
-                                    em1885576@gmail.com
-                                </a>
-
-                                <p class="text-sm text-slate-600 mt-3">
-                                    Este correo se utiliza para comunicaciones
-                                    relacionadas con el proyecto.
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 p-5 border border-slate-200 rounded-2xl text-sm text-slate-600">
-
-                        <strong class="text-slate-800">
-                            Importante:
+                        <strong>
+                            Información clara
                         </strong>
 
-                        <p class="mt-1">
-                            AdminCasa no ofrece servicios profesionales,
-                            mantenimiento, limpieza, remodelación ni
-                            asesoría profesional mediante este sitio.
-                        </p>
-
-                    </div>
-                </div>
-
-                <div class="bg-purple-50 border border-purple-200 rounded-3xl p-8 md:p-9">
-
-                    <h3 class="font-semibold text-2xl mb-3">
-                        ¿Qué encontrarás aquí?
-                    </h3>
-
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        El sitio está organizado como una biblioteca
-                        sencilla de información práctica.
-                    </p>
-
-                    <ul class="space-y-4">
-
-                        <li class="flex gap-3">
-                            <i class="fas fa-check text-purple-600 mt-1"></i>
-                            <span class="text-slate-600">
-                                Guías de mantenimiento preventivo.
-                            </span>
-                        </li>
-
-                        <li class="flex gap-3">
-                            <i class="fas fa-check text-purple-600 mt-1"></i>
-                            <span class="text-slate-600">
-                                Recomendaciones generales de limpieza.
-                            </span>
-                        </li>
-
-                        <li class="flex gap-3">
-                            <i class="fas fa-check text-purple-600 mt-1"></i>
-                            <span class="text-slate-600">
-                                Información general sobre remodelaciones.
-                            </span>
-                        </li>
-
-                        <li class="flex gap-3">
-                            <i class="fas fa-check text-purple-600 mt-1"></i>
-                            <span class="text-slate-600">
-                                Orientación general sobre obligaciones
-                                relacionadas con inmuebles.
-                            </span>
-                        </li>
-
-                        <li class="flex gap-3">
-                            <i class="fas fa-check text-purple-600 mt-1"></i>
-                            <span class="text-slate-600">
-                                Recomendaciones generales para el cuidado
-                                y seguridad del hogar.
-                            </span>
-                        </li>
-
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-purple-900 text-purple-200 py-12">
-
-        <div class="max-w-screen-xl mx-auto px-6">
-
-            <div class="flex flex-col md:flex-row justify-between gap-y-8">
-
-                <div>
-
-                    <div class="flex items-center gap-x-3 mb-4">
-
-                        <div class="w-9 h-9 bg-purple-600 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-home text-white"></i>
-                        </div>
-
-                        <span class="font-bold text-white text-2xl tracking-tighter">
-                            AdminCasa
+                        <span>
+                            Contenido presentado de manera
+                            sencilla y comprensible.
                         </span>
 
                     </div>
 
-                    <p class="max-w-md text-sm text-purple-300 leading-relaxed">
-                        Proyecto educativo personal de Roger Enrique
-                        Mendez Rodriguez. Información general y gratuita
-                        sobre el cuidado del hogar.
-                    </p>
-
                 </div>
 
-                <div class="grid grid-cols-2 gap-x-12 gap-y-8 text-sm">
 
-                    <div>
+                <div class="about-item">
 
-                        <div class="font-semibold text-white mb-3 tracking-wider text-xs">
-                            ENLACES
-                        </div>
-
-                        <div class="space-y-2">
-
-                            <a href="#quienes-somos"
-                               class="block hover:text-white">
-                                Quién está detrás
-                            </a>
-
-                            <a href="#porque-gratis"
-                               class="block hover:text-white">
-                                Por qué es gratuito
-                            </a>
-
-                            <a href="#temas"
-                               class="block hover:text-white">
-                                Guías
-                            </a>
-
-                            <a href="#contacto"
-                               class="block hover:text-white">
-                                Contacto
-                            </a>
-
-                        </div>
+                    <div class="check">
+                        ✓
                     </div>
 
                     <div>
 
-                        <div class="font-semibold text-white mb-3 tracking-wider text-xs">
-                            LEGAL
-                        </div>
+                        <strong>
+                            Navegación sencilla
+                        </strong>
 
-                        <div class="space-y-2">
+                        <span>
+                            Secciones organizadas para encontrar
+                            información fácilmente.
+                        </span>
 
-                            <button type="button"
-                                    onclick="showLegalModal('politicas')"
-                                    class="block hover:text-white text-left">
-                                Privacidad
-                            </button>
-
-                            <button type="button"
-                                    onclick="showLegalModal('terminos')"
-                                    class="block hover:text-white text-left">
-                                Términos
-                            </button>
-
-                        </div>
                     </div>
 
                 </div>
-            </div>
 
-            <div class="mt-14 pt-8 border-t border-purple-800 text-xs flex flex-col md:flex-row justify-between items-center gap-y-3">
 
-                <div>
-                    © 2026 Roger Enrique Mendez Rodriguez.
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Enfoque informativo
+                        </strong>
+
+                        <span>
+                            Contenido general sin sustituir
+                            asesoramiento profesional.
+                        </span>
+
+                    </div>
+
                 </div>
 
-                <div>
-                    Última actualización: 8 de agosto de 2026
+
+                <div class="about-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Transparencia
+                        </strong>
+
+                        <span>
+                            Información sobre el sitio y sus
+                            condiciones disponible públicamente.
+                        </span>
+
+                    </div>
+
                 </div>
+
 
             </div>
 
         </div>
-    </footer>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACTO
+    ========================= -->
+
+    <section class="section contact"
+             id="contacto">
+
+        <div class="container contact-inner">
+
+
+            <div>
+
+                <div class="section-tag"
+                     style="background:rgba(255,255,255,.08);color:#b9c5ff;">
+
+                    CONTACTO
+
+                </div>
+
+                <h2>
+                    ¿Tienes una pregunta?
+                </h2>
+
+                <p>
+                    Si deseas comunicarte con el equipo de
+                    TuCasaAlDía, puedes utilizar los canales
+                    de contacto publicados en este sitio.
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <div class="contact-row">
+
+                    <div class="contact-row-icon">
+                        @
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Correo electrónico
+                        </strong>
+
+                        <span>
+                            contacto@tucasaaldiajelpit.vercel.app
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-row">
+
+                    <div class="contact-row-icon">
+                        ?
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Consultas generales
+                        </strong>
+
+                        <span>
+                            Para comentarios relacionados con
+                            el contenido del sitio.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
 
-<!-- MODAL DE GUÍAS -->
-<div id="topic-modal"
-     class="hidden fixed inset-0 z-[60] items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-     role="dialog"
-     aria-modal="true"
-     onclick="if(event.target === this) hideTopicModal()">
 
-    <div class="modal bg-white w-full max-w-3xl max-h-[92vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col">
+<!-- =========================
+     FOOTER
+========================= -->
 
-        <div class="px-8 pt-7 pb-5 border-b flex items-start justify-between bg-purple-50">
+<footer>
 
-            <div class="flex items-center gap-x-4">
+    <div class="container">
 
-                <div id="modal-icon"
-                     class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+
+        <div class="footer-top">
+
+
+            <div class="footer-brand">
+
+                <div class="logo">
+
+                    <div class="logo-icon">
+                        ⌂
+                    </div>
+
+                    TuCasa<span>AlDía</span>
+
                 </div>
+
+                <p>
+                    Sitio informativo sobre organización,
+                    mantenimiento y cuidado general del hogar.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
 
                 <div>
 
-                    <h3 id="modal-title"
-                        class="font-bold text-2xl md:text-3xl tracking-tight text-slate-900">
-                    </h3>
+                    <h4>
+                        Sitio
+                    </h4>
 
-                    <p id="modal-subtitle"
-                       class="text-purple-600 text-sm font-medium mt-1">
+                    <a href="#inicio">
+                        Inicio
+                    </a>
+
+                    <a href="#guias">
+                        Guías
+                    </a>
+
+                    <a href="#articulos">
+                        Artículos
+                    </a>
+
+                    <a href="#sobre-nosotros">
+                        Sobre nosotros
+                    </a>
+
+                    <a href="#contacto">
+                        Contacto
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Legal
+                    </h4>
+
+                    <button onclick="openModal('privacidad')">
+                        Política de privacidad
+                    </button>
+
+                    <button onclick="openModal('terminos')">
+                        Términos y condiciones
+                    </button>
+
+                    <button onclick="openModal('aviso')">
+                        Aviso legal
+                    </button>
+
+                    <button onclick="openCookieSettings()">
+                        Configurar cookies
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 TuCasaAlDía
+            </span>
+
+            <span>
+                Sitio informativo independiente
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MODAL PRIVACIDAD
+===================================================== -->
+
+<div class="modal-bg"
+     id="modal-privacidad"
+     onclick="closeOutside(event,'privacidad')">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+                Política de privacidad
+            </h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('privacidad')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <h4>
+                Información general
+            </h4>
+
+            <p>
+                TuCasaAlDía respeta la privacidad de los
+                visitantes. Esta página explica de forma general
+                cómo se aborda la información relacionada con
+                el uso del sitio.
+            </p>
+
+
+            <h4>
+                Datos personales
+            </h4>
+
+            <p>
+                El sitio no requiere que los visitantes creen
+                una cuenta para consultar sus contenidos.
+            </p>
+
+
+            <h4>
+                Cookies
+            </h4>
+
+            <p>
+                El sitio puede utilizar cookies u otras
+                tecnologías similares para recordar preferencias
+                y, cuando corresponda, facilitar determinadas
+                funciones.
+            </p>
+
+
+            <h4>
+                Contacto
+            </h4>
+
+            <p>
+                Si una persona decide comunicarse mediante
+                un canal de contacto, la información enviada
+                será utilizada para atender la comunicación
+                correspondiente.
+            </p>
+
+
+            <h4>
+                Actualizaciones
+            </h4>
+
+            <p>
+                Esta política puede actualizarse cuando se
+                incorporen nuevas funcionalidades al sitio.
+            </p>
+
+
+            <p>
+                Última actualización: agosto de 2026.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL TERMINOS
+===================================================== -->
+
+<div class="modal-bg"
+     id="modal-terminos"
+     onclick="closeOutside(event,'terminos')">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+                Términos y condiciones
+            </h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('terminos')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <h4>
+                Uso del sitio
+            </h4>
+
+            <p>
+                TuCasaAlDía proporciona contenido informativo
+                general relacionado con el hogar.
+            </p>
+
+
+            <h4>
+                Carácter informativo
+            </h4>
+
+            <p>
+                Los contenidos publicados no constituyen
+                asesoramiento profesional. Cuando una situación
+                requiera conocimientos especializados, el usuario
+                debe acudir a un profesional calificado.
+            </p>
+
+
+            <h4>
+                Responsabilidad
+            </h4>
+
+            <p>
+                El contenido se proporciona como información
+                general y puede no ser aplicable a todas las
+                situaciones particulares.
+            </p>
+
+
+            <h4>
+                Actualización
+            </h4>
+
+            <p>
+                El contenido y estas condiciones pueden
+                actualizarse periódicamente.
+            </p>
+
+
+            <p>
+                Última actualización: agosto de 2026.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL AVISO LEGAL
+===================================================== -->
+
+<div class="modal-bg"
+     id="modal-aviso"
+     onclick="closeOutside(event,'aviso')">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>
+                Aviso legal
+            </h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('aviso')">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <h4>
+                Identificación del sitio
+            </h4>
+
+            <p>
+                TuCasaAlDía es un proyecto web de carácter
+                informativo dedicado a contenidos relacionados
+                con el hogar.
+            </p>
+
+
+            <h4>
+                Finalidad
+            </h4>
+
+            <p>
+                La finalidad del sitio es presentar información
+                general sobre organización, mantenimiento,
+                limpieza y cuidado de viviendas.
+            </p>
+
+
+            <h4>
+                Sin representación de terceros
+            </h4>
+
+            <p>
+                TuCasaAlDía no se presenta como representante
+                oficial de fabricantes, empresas, instituciones
+                u otras marcas mencionadas eventualmente en
+                contenidos informativos.
+            </p>
+
+
+            <h4>
+                Contenido
+            </h4>
+
+            <p>
+                Se recomienda comprobar la información específica
+                con fuentes oficiales cuando corresponda.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COOKIE BANNER
+===================================================== -->
+
+<div class="cookie-banner"
+     id="cookieBanner"
+     role="dialog"
+     aria-label="Preferencias de cookies">
+
+    <div class="cookie-content">
+
+
+        <div class="cookie-icon">
+            🍪
+        </div>
+
+
+        <div class="cookie-text">
+
+            <h3>
+                Preferencias de cookies
+            </h3>
+
+            <p>
+
+                Utilizamos cookies y tecnologías similares
+                para recordar tus preferencias y, si eliges
+                permitirlas, ayudar a mejorar la experiencia
+                del sitio.
+
+                Puedes
+                <a href="#"
+                   onclick="openCookieSettings(); return false;">
+                    configurar tus preferencias
+                </a>
+                en cualquier momento.
+
+            </p>
+
+        </div>
+
+
+        <div class="cookie-actions">
+
+            <button class="cookie-button"
+                    onclick="rejectCookies()">
+
+                Rechazar no esenciales
+
+            </button>
+
+
+            <button class="cookie-button"
+                    onclick="openCookieSettings()">
+
+                Configurar
+
+            </button>
+
+
+            <button class="cookie-button primary"
+                    onclick="acceptAllCookies()">
+
+                Aceptar todas
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COOKIE SETTINGS
+===================================================== -->
+
+<div class="cookie-settings"
+     id="cookieSettings"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Configuración de cookies">
+
+    <div class="cookie-panel">
+
+
+        <div class="cookie-panel-header">
+
+            <h3>
+                Configuración de cookies
+            </h3>
+
+            <button class="cookie-panel-close"
+                    onclick="closeCookieSettings()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="cookie-panel-body">
+
+
+            <p class="cookie-intro">
+
+                Puedes elegir qué categorías de cookies
+                deseas permitir. Las cookies necesarias
+                permanecen activas porque son necesarias
+                para determinadas funciones básicas del sitio.
+
+            </p>
+
+
+            <!-- NECESARIAS -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies necesarias
+                    </h4>
+
+                    <p>
+                        Son necesarias para recordar determinadas
+                        preferencias básicas y permitir el
+                        funcionamiento del sitio.
                     </p>
 
                 </div>
+
+
+                <div>
+
+                    <span class="cookie-status">
+                        Siempre activas
+                    </span>
+
+                </div>
+
             </div>
 
-            <button type="button"
-                    onclick="hideTopicModal()"
-                    class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-purple-100 rounded-2xl"
-                    aria-label="Cerrar">
-                <i class="fas fa-times text-2xl"></i>
+
+            <!-- PREFERENCIAS -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies de preferencias
+                    </h4>
+
+                    <p>
+                        Permiten recordar determinadas preferencias
+                        seleccionadas por el visitante.
+                    </p>
+
+                </div>
+
+
+                <label class="cookie-toggle">
+
+                    <input type="checkbox"
+                           id="preferencesCookies">
+
+                    <span class="cookie-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- ANALITICAS -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies analíticas
+                    </h4>
+
+                    <p>
+                        Pueden utilizarse para comprender de forma
+                        agregada cómo se utiliza el sitio y detectar
+                        oportunidades de mejora.
+                    </p>
+
+                </div>
+
+
+                <label class="cookie-toggle">
+
+                    <input type="checkbox"
+                           id="analyticsCookies">
+
+                    <span class="cookie-slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- PUBLICIDAD -->
+
+            <div class="cookie-category">
+
+                <div>
+
+                    <h4>
+                        Cookies publicitarias
+                    </h4>
+
+                    <p>
+                        Se utilizan únicamente cuando corresponda
+                        para tecnologías publicitarias y preferencias
+                        relacionadas con anuncios.
+                    </p>
+
+                </div>
+
+
+                <label class="cookie-toggle">
+
+                    <input type="checkbox"
+                           id="advertisingCookies">
+
+                    <span class="cookie-slider"></span>
+
+                </label>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="cookie-panel-footer">
+
+            <button class="cookie-button"
+                    onclick="rejectCookies()">
+
+                Rechazar no esenciales
+
+            </button>
+
+
+            <button class="cookie-button primary"
+                    onclick="saveCookiePreferences()">
+
+                Guardar preferencias
+
             </button>
 
         </div>
 
-        <div id="modal-content"
-             class="p-8 overflow-y-auto flex-1 text-[15px] leading-relaxed text-slate-700">
-        </div>
 
-        <div class="px-8 py-5 bg-purple-50 border-t flex items-center justify-between text-xs">
-
-            <div class="text-purple-600 font-medium flex items-center gap-x-2">
-                <i class="fas fa-info-circle"></i>
-                <span>Información educativa general</span>
-            </div>
-
-            <button type="button"
-                    onclick="hideTopicModal()"
-                    class="px-6 py-2.5 text-sm font-semibold text-purple-600 hover:bg-purple-100 rounded-2xl">
-                Cerrar
-            </button>
-
-        </div>
     </div>
+
 </div>
 
 
-<!-- PRIVACIDAD -->
-<div id="politicas-modal"
-     class="hidden fixed inset-0 z-[70] items-center justify-center p-4 bg-black/60 backdrop-blur"
-     role="dialog"
-     aria-modal="true"
-     onclick="if(event.target === this) hideLegalModal('politicas')">
 
-    <div class="modal bg-white w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col">
+<!-- =====================================================
+     COOKIE MANAGE BUTTON
+===================================================== -->
 
-        <div class="px-8 pt-7 pb-5 border-b flex justify-between items-center">
+<button class="cookie-manage"
+        id="cookieManage"
+        onclick="openCookieSettings()"
+        aria-label="Configurar cookies"
+        title="Configurar cookies">
 
-            <h3 class="font-bold text-2xl tracking-tight">
-                Política de Privacidad
-            </h3>
+    🍪
 
-            <button type="button"
-                    onclick="hideLegalModal('politicas')"
-                    class="text-3xl leading-none text-slate-300 hover:text-slate-500"
-                    aria-label="Cerrar">
-                ×
-            </button>
-
-        </div>
-
-        <div class="p-8 overflow-y-auto text-sm text-slate-600 space-y-5 leading-relaxed">
-
-            <p>
-                AdminCasa es un proyecto personal educativo creado por
-                Roger Enrique Mendez Rodriguez.
-            </p>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Datos personales
-                </h4>
-
-                <p>
-                    El sitio no solicita datos personales para permitir
-                    la navegación. El contacto se realiza voluntariamente
-                    mediante correo electrónico.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Finalidad
-                </h4>
-
-                <p>
-                    Cuando una persona escribe voluntariamente al correo
-                    de contacto, la información recibida se utiliza para
-                    responder la comunicación correspondiente.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    No venta de información
-                </h4>
-
-                <p>
-                    No se venden datos personales ni se utilizan los datos
-                    de contacto para campañas comerciales propias o de terceros.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Derechos
-                </h4>
-
-                <p>
-                    Las solicitudes relacionadas con datos personales pueden
-                    enviarse al correo
-                    <a href="mailto:em1885576@gmail.com"
-                       class="text-purple-600 underline">
-                        em1885576@gmail.com
-                    </a>.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Cookies y tecnologías similares
-                </h4>
-
-                <p>
-                    Esta versión del sitio no utiliza un sistema propio
-                    de cookies de seguimiento ni un banner de consentimiento.
-                    Si posteriormente se incorporan herramientas que utilicen
-                    cookies o tecnologías similares, esta política deberá
-                    actualizarse antes de activarlas.
-                </p>
-            </div>
-
-            <p class="text-xs pt-3 border-t">
-                Última actualización: 8 de agosto de 2026.
-            </p>
-
-        </div>
-
-        <div class="px-8 py-4 bg-purple-50 border-t text-right">
-
-            <button type="button"
-                    onclick="hideLegalModal('politicas')"
-                    class="px-8 py-2.5 text-sm font-semibold bg-purple-600 text-white rounded-2xl hover:bg-purple-700">
-                Cerrar
-            </button>
-
-        </div>
-    </div>
-</div>
+</button>
 
 
-<!-- TÉRMINOS -->
-<div id="terminos-modal"
-     class="hidden fixed inset-0 z-[70] items-center justify-center p-4 bg-black/60 backdrop-blur"
-     role="dialog"
-     aria-modal="true"
-     onclick="if(event.target === this) hideLegalModal('terminos')">
 
-    <div class="modal bg-white w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col">
-
-        <div class="px-8 pt-7 pb-5 border-b flex justify-between items-center">
-
-            <h3 class="font-bold text-2xl tracking-tight">
-                Términos y Condiciones
-            </h3>
-
-            <button type="button"
-                    onclick="hideLegalModal('terminos')"
-                    class="text-3xl leading-none text-slate-300 hover:text-slate-500"
-                    aria-label="Cerrar">
-                ×
-            </button>
-
-        </div>
-
-        <div class="p-8 overflow-y-auto text-sm text-slate-600 space-y-5 leading-relaxed">
-
-            <p>
-                AdminCasa es un sitio web educativo e informativo
-                de carácter personal.
-            </p>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Naturaleza del contenido
-                </h4>
-
-                <p>
-                    El contenido tiene fines educativos y de orientación
-                    general. No constituye asesoría profesional, legal,
-                    técnica, tributaria, estructural ni de seguridad.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Fuentes oficiales
-                </h4>
-
-                <p>
-                    Las personas deben comprobar los requisitos, plazos,
-                    procedimientos y normas vigentes directamente con las
-                    autoridades correspondientes antes de tomar decisiones.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Remodelaciones y obras
-                </h4>
-
-                <p>
-                    Las obras que puedan requerir licencia, permisos,
-                    profesionales responsables u otros requisitos deben
-                    verificarse ante la autoridad competente y conforme
-                    a la normativa vigente.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Información tributaria
-                </h4>
-
-                <p>
-                    Los plazos, descuentos, procedimientos y obligaciones
-                    tributarias pueden cambiar. Para información sobre
-                    impuestos locales se debe consultar directamente a
-                    la autoridad tributaria correspondiente.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="font-semibold text-purple-800 mb-2">
-                    Responsabilidad
-                </h4>
-
-                <p>
-                    El visitante es responsable de verificar la información
-                    y obtener asesoramiento profesional cuando la situación
-                    lo requiera.
-                </p>
-            </div>
-
-            <p class="text-xs pt-3 border-t">
-                Última actualización: 8 de agosto de 2026.
-            </p>
-
-        </div>
-
-        <div class="px-8 py-4 bg-purple-50 border-t text-right">
-
-            <button type="button"
-                    onclick="hideLegalModal('terminos')"
-                    class="px-8 py-2.5 text-sm font-semibold bg-purple-600 text-white rounded-2xl hover:bg-purple-700">
-                Cerrar
-            </button>
-
-        </div>
-    </div>
-</div>
-
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
-    /* ============================================
-       MENÚ MÓVIL
-    ============================================ */
 
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
+    /* =====================================================
+       MENU
+    ===================================================== */
 
-        if (menu) {
-            menu.classList.toggle('hidden');
-        }
+    function toggleMenu() {
+
+        const nav =
+            document.getElementById("mainNav");
+
+        nav.classList.toggle("active");
+
     }
 
 
-    /* ============================================
-       DATOS DE LAS GUÍAS
-    ============================================ */
+    document
+        .querySelectorAll(".nav a")
+        .forEach(function(link) {
 
-    const topicsData = [
+            link.addEventListener(
+                "click",
+                function() {
 
-        {
-            title: "Mantenimiento Preventivo del Hogar",
-            icon: '<i class="fas fa-tools text-purple-700 text-2xl"></i>',
-            subtitle: "Revisiones básicas para prevenir problemas",
-            intro:
-                "El mantenimiento preventivo ayuda a detectar problemas antes de que se conviertan en reparaciones mayores. Las necesidades concretas dependen del tipo de vivienda, ubicación, materiales y condiciones climáticas.",
-            tips: [
-                "Revisa periódicamente techos, canaletas y bajantes, especialmente antes de temporadas de lluvia.",
-                "Comprueba grifos, llaves de paso y tuberías visibles para detectar fugas o humedad.",
-                "Inspecciona paredes y techos en busca de manchas, humedad, grietas o deterioro.",
-                "Las instalaciones eléctricas deben ser revisadas por profesionales cualificados cuando exista cualquier anomalía.",
-                "Limpia periódicamente extractores y ventilación de cocina y baños.",
-                "En zonas costeras, presta atención a la corrosión de elementos metálicos."
-            ],
-            resources:
-                "Para problemas estructurales, eléctricos o de instalaciones, consulta a un profesional cualificado."
-        },
+                    document
+                        .getElementById("mainNav")
+                        .classList
+                        .remove("active");
 
-        {
-            title: "Limpieza y Organización",
-            icon: '<i class="fas fa-broom text-purple-700 text-2xl"></i>',
-            subtitle: "Rutinas prácticas para mantener el hogar",
-            intro:
-                "Una rutina de limpieza adecuada ayuda a conservar superficies, muebles y espacios interiores en buenas condiciones.",
-            tips: [
-                "Mantén una rutina regular para superficies de cocina y baño.",
-                "Ventila los espacios cuando las condiciones exteriores sean adecuadas.",
-                "Evita mezclar productos de limpieza, especialmente productos que contengan sustancias químicas incompatibles.",
-                "Utiliza productos apropiados para cada tipo de superficie.",
-                "Revisa periódicamente armarios y espacios de almacenamiento.",
-                "Evita el exceso de agua sobre superficies de madera o materiales sensibles a la humedad."
-            ],
-            resources:
-                "Lee siempre las instrucciones y advertencias del fabricante de cada producto de limpieza."
-        },
+                }
+            );
 
-        {
-            title: "Remodelación Inteligente",
-            icon: '<i class="fas fa-paint-roller text-purple-700 text-2xl"></i>',
-            subtitle: "Planificación antes de comenzar una obra",
-            intro:
-                "Una remodelación debe planificarse teniendo en cuenta presupuesto, materiales, seguridad y requisitos legales aplicables al inmueble.",
-            tips: [
-                "Define previamente el alcance de la obra y el presupuesto disponible.",
-                "Reserva una cantidad adicional para imprevistos.",
-                "Antes de realizar modificaciones estructurales, consulta a un profesional competente.",
-                "Comprueba si la obra requiere licencia, permiso o autorización.",
-                "Conserva contratos, presupuestos, facturas y documentos relacionados con la obra.",
-                "Utiliza materiales adecuados para las condiciones ambientales de la zona."
-            ],
-            resources:
-                "Antes de ejecutar una obra que pueda modificar estructura, distribución, fachada o uso del inmueble, consulta la normativa local y a un profesional."
-        },
-
-        {
-            title: "Impuestos Prediales",
-            icon: '<i class="fas fa-file-invoice-dollar text-purple-700 text-2xl"></i>',
-            subtitle: "Información general para propietarios",
-            intro:
-                "Los impuestos relacionados con inmuebles tienen requisitos y fechas que pueden variar según el municipio y el año. La información oficial debe consultarse directamente con la autoridad correspondiente.",
-            tips: [
-                "Consulta cada año el calendario tributario oficial.",
-                "Verifica directamente el valor liquidado antes de efectuar un pago.",
-                "Conserva los comprobantes de pago.",
-                "Comprueba las condiciones vigentes de descuentos o facilidades de pago.",
-                "Mantén actualizada la información relacionada con el inmueble cuando corresponda.",
-                "Para situaciones particulares, consulta directamente con la autoridad tributaria o un profesional."
-            ],
-            resources:
-                "Para información sobre el Impuesto Predial en Barranquilla, consulta directamente los canales oficiales de la Alcaldía de Barranquilla."
-        },
-
-        {
-            title: "Cuidado Integral y Seguridad",
-            icon: '<i class="fas fa-shield-halved text-purple-700 text-2xl"></i>',
-            subtitle: "Prevención y cuidado general",
-            intro:
-                "El cuidado del hogar también comprende prevención de riesgos, mantenimiento de áreas exteriores, control de humedad y hábitos básicos de seguridad.",
-            tips: [
-                "Evita acumulaciones de agua en recipientes y espacios exteriores.",
-                "Revisa periódicamente puertas, ventanas y cerraduras.",
-                "Comprueba que las áreas de circulación estén libres de obstáculos.",
-                "Mantén equipos eléctricos en buenas condiciones.",
-                "Utiliza iluminación exterior adecuada cuando sea necesario.",
-                "Para problemas de plagas, electricidad, gas o estructura, consulta profesionales cualificados."
-            ],
-            resources:
-                "Las recomendaciones de seguridad no sustituyen una evaluación profesional de los riesgos específicos de una vivienda."
-        }
-
-    ];
-
-
-    /* ============================================
-       MODAL DE GUÍAS
-    ============================================ */
-
-    function showTopicModal(index) {
-
-        const topic = topicsData[index];
-
-        if (!topic) {
-            return;
-        }
-
-        const modal = document.getElementById('topic-modal');
-        const icon = document.getElementById('modal-icon');
-        const title = document.getElementById('modal-title');
-        const subtitle = document.getElementById('modal-subtitle');
-        const content = document.getElementById('modal-content');
-
-        icon.innerHTML = topic.icon;
-
-        title.textContent = topic.title;
-        subtitle.textContent = topic.subtitle;
-
-        let html = `
-            <p class="text-lg text-slate-600 mb-8">
-                ${topic.intro}
-            </p>
-
-            <h4 class="font-semibold text-purple-800 mb-4 flex items-center gap-x-2">
-                <i class="fas fa-list-check"></i>
-                <span>Consejos prácticos</span>
-            </h4>
-
-            <div class="space-y-3 mb-8">
-        `;
-
-        topic.tips.forEach((tip, index) => {
-
-            html += `
-                <div class="tip-item flex gap-x-4 bg-purple-50 border border-purple-100 p-5 rounded-2xl">
-
-                    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center text-xs font-bold mt-0.5">
-                        ${index + 1}
-                    </div>
-
-                    <div class="text-[15px] leading-relaxed">
-                        ${tip}
-                    </div>
-
-                </div>
-            `;
         });
 
-        html += `
-            </div>
 
-            <div class="bg-purple-50 border border-purple-200 rounded-2xl p-5 text-sm">
-                <div class="flex gap-x-3">
-                    <i class="fas fa-lightbulb text-purple-600 mt-1"></i>
+    /* =====================================================
+       MODALES
+    ===================================================== */
 
-                    <div>
-                        <span class="font-semibold text-purple-800">
-                            Recomendación:
-                        </span>
+    function openModal(type) {
 
-                        <p class="text-purple-700 mt-1">
-                            ${topic.resources}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        `;
+        const modal =
+            document.getElementById(
+                "modal-" + type
+            );
 
-        content.innerHTML = html;
+        if (!modal) return;
 
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        modal.classList.add("active");
 
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow =
+            "hidden";
+
     }
 
 
-    function hideTopicModal() {
+    function closeModal(type) {
 
-        const modal = document.getElementById('topic-modal');
+        const modal =
+            document.getElementById(
+                "modal-" + type
+            );
 
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
+        if (!modal) return;
 
-        document.body.style.overflow = '';
+        modal.classList.remove("active");
+
+        document.body.style.overflow =
+            "";
+
     }
 
 
-    /* ============================================
-       MODALES LEGALES
-    ============================================ */
+    function closeOutside(event, type) {
 
-    function showLegalModal(type) {
+        if (
+            event.target.id ===
+            "modal-" + type
+        ) {
 
-        const modal = document.getElementById(type + '-modal');
+            closeModal(type);
 
-        if (!modal) {
-            return;
         }
 
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-
-        document.body.style.overflow = 'hidden';
     }
 
 
-    function hideLegalModal(type) {
+    /* =====================================================
+       COOKIES
+    ===================================================== */
 
-        const modal = document.getElementById(type + '-modal');
+    const COOKIE_KEY =
+        "tucasaaldia_cookie_preferences";
 
-        if (!modal) {
-            return;
+
+    function getCookiePreferences() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    COOKIE_KEY
+                );
+
+            if (!saved) {
+                return null;
+            }
+
+            return JSON.parse(saved);
+
+        } catch (error) {
+
+            return null;
+
         }
 
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-
-        document.body.style.overflow = '';
     }
 
 
-    /* ============================================
-       ESCAPE PARA CERRAR
-    ============================================ */
+    function showCookieBanner() {
 
-    document.addEventListener('keydown', function(event) {
+        const banner =
+            document.getElementById(
+                "cookieBanner"
+            );
 
-        if (event.key !== 'Escape') {
-            return;
+        const manage =
+            document.getElementById(
+                "cookieManage"
+            );
+
+        if (banner) {
+            banner.classList.add("show");
         }
 
-        const topicModal = document.getElementById('topic-modal');
-        const privacyModal = document.getElementById('politicas-modal');
-        const termsModal = document.getElementById('terminos-modal');
-
-        if (topicModal && !topicModal.classList.contains('hidden')) {
-            hideTopicModal();
-            return;
+        if (manage) {
+            manage.classList.remove("show");
         }
 
-        if (privacyModal && !privacyModal.classList.contains('hidden')) {
-            hideLegalModal('politicas');
-            return;
+    }
+
+
+    function hideCookieBanner() {
+
+        const banner =
+            document.getElementById(
+                "cookieBanner"
+            );
+
+        const manage =
+            document.getElementById(
+                "cookieManage"
+            );
+
+        if (banner) {
+            banner.classList.remove("show");
         }
 
-        if (termsModal && !termsModal.classList.contains('hidden')) {
-            hideLegalModal('terminos');
+        if (manage) {
+            manage.classList.add("show");
         }
-    });
+
+    }
 
 
-    /* ============================================
-       INICIALIZACIÓN
-    ============================================ */
+    function acceptAllCookies() {
 
-    document.addEventListener('DOMContentLoaded', function() {
+        const preferences = {
 
-        console.log(
-            '[AdminCasa] Sitio educativo cargado.'
+            necessary: true,
+
+            preferences: true,
+
+            analytics: true,
+
+            advertising: true,
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            COOKIE_KEY,
+            JSON.stringify(preferences)
         );
 
-    });
+
+        hideCookieBanner();
+
+        closeCookieSettings();
+
+        applyCookiePreferences(
+            preferences
+        );
+
+    }
+
+
+    function rejectCookies() {
+
+        const preferences = {
+
+            necessary: true,
+
+            preferences: false,
+
+            analytics: false,
+
+            advertising: false,
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            COOKIE_KEY,
+            JSON.stringify(preferences)
+        );
+
+
+        hideCookieBanner();
+
+        closeCookieSettings();
+
+        applyCookiePreferences(
+            preferences
+        );
+
+    }
+
+
+    function saveCookiePreferences() {
+
+        const preferences = {
+
+            necessary: true,
+
+            preferences:
+                document.getElementById(
+                    "preferencesCookies"
+                ).checked,
+
+            analytics:
+                document.getElementById(
+                    "analyticsCookies"
+                ).checked,
+
+            advertising:
+                document.getElementById(
+                    "advertisingCookies"
+                ).checked,
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            COOKIE_KEY,
+            JSON.stringify(preferences)
+        );
+
+
+        hideCookieBanner();
+
+        closeCookieSettings();
+
+        applyCookiePreferences(
+            preferences
+        );
+
+    }
+
+
+    function applyCookiePreferences(
+        preferences
+    ) {
+
+        /*
+         * En esta versión no se cargan scripts
+         * de analítica o publicidad de terceros.
+         *
+         * Si posteriormente incorporas alguno,
+         * debes cargarlo únicamente cuando la
+         * categoría correspondiente esté autorizada.
+         */
+
+        window.cookiePreferences =
+            preferences;
+
+    }
+
+
+    /* =====================================================
+       COOKIE SETTINGS
+    ===================================================== */
+
+    function openCookieSettings() {
+
+        const settings =
+            document.getElementById(
+                "cookieSettings"
+            );
+
+        const saved =
+            getCookiePreferences();
+
+
+        if (saved) {
+
+            document.getElementById(
+                "preferencesCookies"
+            ).checked =
+                saved.preferences === true;
+
+
+            document.getElementById(
+                "analyticsCookies"
+            ).checked =
+                saved.analytics === true;
+
+
+            document.getElementById(
+                "advertisingCookies"
+            ).checked =
+                saved.advertising === true;
+
+        } else {
+
+            document.getElementById(
+                "preferencesCookies"
+            ).checked = false;
+
+
+            document.getElementById(
+                "analyticsCookies"
+            ).checked = false;
+
+
+            document.getElementById(
+                "advertisingCookies"
+            ).checked = false;
+
+        }
+
+
+        settings.classList.add("show");
+
+        document.body.classList.add(
+            "cookie-open"
+        );
+
+    }
+
+
+    function closeCookieSettings() {
+
+        const settings =
+            document.getElementById(
+                "cookieSettings"
+            );
+
+        settings.classList.remove("show");
+
+        document.body.classList.remove(
+            "cookie-open"
+        );
+
+    }
+
+
+    /* =====================================================
+       CLICK FUERA DEL PANEL
+    ===================================================== */
+
+    document
+        .getElementById("cookieSettings")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeCookieSettings();
+
+                }
+
+            }
+        );
+
+
+    /* =====================================================
+       ESC
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeModal("privacidad");
+
+                closeModal("terminos");
+
+                closeModal("aviso");
+
+                closeCookieSettings();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INICIALIZACIÓN
+    ===================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            const saved =
+                getCookiePreferences();
+
+
+            if (!saved) {
+
+                showCookieBanner();
+
+            } else {
+
+                applyCookiePreferences(
+                    saved
+                );
+
+                const manage =
+                    document.getElementById(
+                        "cookieManage"
+                    );
+
+                if (manage) {
+                    manage.classList.add(
+                        "show"
+                    );
+                }
+
+            }
+
+        }
+    );
+
 </script>
+
 
 </body>
 </html>
+```
